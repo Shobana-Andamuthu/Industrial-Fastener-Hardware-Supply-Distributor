@@ -1,0 +1,1129 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr" data-theme="light">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Business Client Dashboard | TITAN FASTENERS — Master Industrial Hardware Distributor</title>
+  <meta name="description" content="Titan Fasteners B2B Client Dashboard: Real-time PO tracking, 1-click bulk reorders, digital MTR test certificates, and commercial credit management.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Space+Grotesk:wght@600;700;800&display=swap" rel="stylesheet">
+  <link rel="icon" type="image/svg+xml" href="assets/images/favicon.svg">
+  <link rel="apple-touch-icon" href="assets/images/favicon.svg">
+  <link rel="stylesheet" href="assets/css/style.css">
+</head>
+<body class="dashboard-body">
+
+  <!-- PAGE PRELOADER -->
+  <div class="page-preloader" id="pagePreloader">
+    <div class="preloader-inner">
+      <div class="preloader-brand">
+        <div class="preloader-spinner-wrap">
+          <div class="preloader-ring"></div>
+          <div class="preloader-bolt-icon">
+            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"></path></svg>
+          </div>
+        </div>
+        <div class="preloader-logo-text">
+          <span class="p-title">TITAN</span>
+          <span class="p-sub">INDUSTRIAL SUPPLY</span>
+        </div>
+      </div>
+      <div class="preloader-bar">
+        <div class="preloader-progress"></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="dashboard-wrapper">
+    
+    <!-- ==========================================================================
+         SIDEBAR NAVIGATION (Desktop Sticky / Mobile Off-Canvas Drawer)
+         ========================================================================== -->
+    <aside class="dashboard-sidebar" id="dashboardSidebar">
+      
+      <div class="dash-sidebar-header">
+        <a href="index.html" class="brand-logo" aria-label="TITAN Fasteners Home">
+          <img src="assets/images/logo.svg" alt="TITAN Fasteners &amp; Supply" class="brand-logo-img logo-light" style="height: 38px; width: auto;" />
+          <img src="assets/images/logo-white.svg" alt="TITAN Fasteners &amp; Supply" class="brand-logo-img logo-dark" style="height: 38px; width: auto;" />
+        </a>
+        <button class="dash-sidebar-close" id="dashSidebarClose" aria-label="Close sidebar">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
+        </button>
+      </div>
+
+      <!-- Account Badge -->
+      <div class="dash-account-snippet">
+        <div class="dash-avatar">KC</div>
+        <div class="dash-account-info">
+          <span class="dash-account-name">Keystone Corp</span>
+          <span class="dash-account-tier">Tier-1 Contract Client</span>
+        </div>
+      </div>
+
+      <!-- Nav Menu Items -->
+      <nav class="dash-nav" aria-label="Dashboard Sections">
+        <ul class="dash-nav-list">
+          <li>
+            <a href="#overview" class="dash-nav-link active">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="7" height="7"></rect><rect x="14" y="3" width="7" height="7"></rect><rect x="14" y="14" width="7" height="7"></rect><rect x="3" y="14" width="7" height="7"></rect></svg>
+              <span>1. Overview</span>
+            </a>
+          </li>
+          <li>
+            <a href="#catalog" class="dash-nav-link">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="12 2 2 7 12 12 22 7 12 2"></polygon><polyline points="2 17 12 22 22 17"></polyline><polyline points="2 12 12 17 22 12"></polyline></svg>
+              <span>2. Product Catalog</span>
+            </a>
+          </li>
+          <li>
+            <a href="#recent-orders" class="dash-nav-link">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="16" y1="13" x2="8" y2="13"></line><line x1="16" y1="17" x2="8" y2="17"></line><polyline points="10 9 9 9 8 9"></polyline></svg>
+              <span>3. Recent Orders</span>
+              <span class="dash-badge-count">5</span>
+            </a>
+          </li>
+          <li>
+            <a href="#reorder-requests" class="dash-nav-link">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="23 4 23 10 17 10"></polyline><path d="M20.49 15a9 9 0 1 1-2.12-9.36L23 10"></path></svg>
+              <span>4. Reorder Requests</span>
+            </a>
+          </li>
+          <li>
+            <a href="#order-tracking" class="dash-nav-link">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="1" y="3" width="15" height="13"></rect><polygon points="16 8 20 8 23 11 23 16 16 16 16 8"></polygon><circle cx="5.5" cy="18.5" r="2.5"></circle><circle cx="18.5" cy="18.5" r="2.5"></circle></svg>
+              <span>5. Order Tracking</span>
+              <span class="dash-badge-pulse">Live</span>
+            </a>
+          </li>
+          <li>
+            <a href="#business-account" class="dash-nav-link">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path><circle cx="12" cy="7" r="4"></circle></svg>
+              <span>6. Business Account</span>
+            </a>
+          </li>
+          <li>
+            <a href="#support" class="dash-nav-link">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path></svg>
+              <span>7. Support</span>
+            </a>
+          </li>
+        </ul>
+      </nav>
+
+      <!-- Sidebar Footer -->
+      <div class="dash-sidebar-footer">
+        <div class="dash-credit-box">
+          <div class="dash-credit-header">
+            <span>Net-30 Credit Line</span>
+            <strong>$107.4k Available</strong>
+          </div>
+          <div class="dash-credit-bar">
+            <div class="dash-credit-fill" style="width: 28%;"></div>
+          </div>
+          <div class="dash-credit-meta">$42,600 utilized of $150,000 limit</div>
+        </div>
+        
+        <div class="dash-sidebar-links">
+          <a href="index.html" class="dash-back-link">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="15 18 9 12 15 6"></polyline></svg>
+            <span>Return to Public Website</span>
+          </a>
+          <a href="login.html" class="dash-logout-link">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"></path><polyline points="16 17 21 12 16 7"></polyline><line x1="21" y1="12" x2="9" y2="12"></line></svg>
+            <span>Log Out</span>
+          </a>
+        </div>
+      </div>
+
+    </aside>
+
+    <!-- Sidebar Backdrop for Mobile/Tablet -->
+    <div class="dash-sidebar-backdrop" id="dashSidebarBackdrop"></div>
+
+    <!-- ==========================================================================
+         MAIN CONTENT AREA
+         ========================================================================== -->
+    <div class="dashboard-main-area">
+      
+      <!-- STICKY TOP BAR -->
+      <header class="dash-topbar">
+        <div class="dash-topbar-left">
+          <!-- Mobile Brand Logo -->
+          <a href="index.html" class="dash-topbar-logo brand-logo" aria-label="TITAN Fasteners Home">
+            <img src="assets/images/logo.svg" alt="TITAN Fasteners &amp; Supply" class="brand-logo-img logo-light" style="height: 28px; width: auto;" />
+            <img src="assets/images/logo-white.svg" alt="TITAN Fasteners &amp; Supply" class="brand-logo-img logo-dark" style="height: 28px; width: auto;" />
+          </a>
+        </div>
+
+        <div class="dash-topbar-right">
+          <!-- Theme Toggle -->
+          <button class="icon-btn theme-toggle-btn" aria-label="Toggle theme">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path></svg>
+          </button>
+
+          <!-- RTL Toggle -->
+          <button class="icon-btn rtl-toggle-btn" aria-label="Toggle text direction">RTL</button>
+
+          <!-- User Menu -->
+          <div class="dash-user-menu">
+            <div class="dash-avatar-sm">JD</div>
+            <div class="dash-user-details">
+              <span class="user-name">Johnathan Davis</span>
+              <span class="user-role">Head of Procurement</span>
+            </div>
+          </div>
+
+          <!-- Mobile Sidebar Hamburger Toggle (Positioned at far right) -->
+          <button class="dash-hamburger-btn" id="dashHamburgerBtn" aria-label="Open sidebar menu">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="18" x2="21" y2="18"></line></svg>
+          </button>
+        </div>
+      </header>
+
+      <!-- DASHBOARD MAIN BODY -->
+      <main class="dash-content">
+        
+        <!-- ==========================================================================
+             SECTION 1: DASHBOARD OVERVIEW
+             ========================================================================== -->
+        <section class="dash-section active-tab" id="overview">
+          <div class="dash-section-header">
+            <div>
+              <span class="badge badge-orange" style="margin-bottom: 6px;">Enterprise Procurement Portal</span>
+              <h1 class="dash-page-title">Executive Supply Overview</h1>
+              <p class="dash-page-subtitle">Welcome back, Johnathan. Here is your organization's active hardware procurement status.</p>
+            </div>
+            <div class="dash-header-actions">
+              <a href="#reorder-requests" class="btn btn-primary btn-sm">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" y1="5" x2="12" y2="19"></line><line x1="5" y1="12" x2="19" y2="12"></line></svg>
+                New Bulk Reorder
+              </a>
+              <a href="#recent-orders" class="btn btn-outline btn-sm">View Active POs</a>
+            </div>
+          </div>
+
+          <!-- 4 Overview Stats Cards (Strict 2x2 on iPad) -->
+          <div class="dash-stats-grid">
+            
+            <div class="dash-stat-card">
+              <div class="dash-stat-icon icon-tint-orange">
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="1" y="3" width="15" height="13"></rect><polygon points="16 8 20 8 23 11 23 16 16 16 16 8"></polygon><circle cx="5.5" cy="18.5" r="2.5"></circle><circle cx="18.5" cy="18.5" r="2.5"></circle></svg>
+              </div>
+              <div class="dash-stat-content">
+                <div class="dash-stat-label">Active Purchase Orders</div>
+                <div class="dash-stat-value">3 Shipments</div>
+                <div class="dash-stat-trend text-success">
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="23 6 13.5 15.5 8.5 10.5 1 18"></polyline><polyline points="17 6 23 6 23 12"></polyline></svg>
+                  2 In Transit &bull; 1 Staging
+                </div>
+              </div>
+            </div>
+
+            <div class="dash-stat-card">
+              <div class="dash-stat-icon">
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"></path><polyline points="3.27 6.96 12 12.01 20.73 6.96"></polyline><line x1="12" y1="22.08" x2="12" y2="12"></line></svg>
+              </div>
+              <div class="dash-stat-content">
+                <div class="dash-stat-label">Total Volume Sourced</div>
+                <div class="dash-stat-value">148.5 Tonnes</div>
+                <div class="dash-stat-trend text-primary">
+                  100% Heat Lot Compliance
+                </div>
+              </div>
+            </div>
+
+            <div class="dash-stat-card">
+              <div class="dash-stat-icon">
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="16" y1="13" x2="8" y2="13"></line><line x1="16" y1="17" x2="8" y2="17"></line></svg>
+              </div>
+              <div class="dash-stat-content">
+                <div class="dash-stat-label">MTR Test Certificates</div>
+                <div class="dash-stat-value">24 Archived</div>
+                <div class="dash-stat-trend text-success">
+                  EN 10204 3.1 Digital Validated
+                </div>
+              </div>
+            </div>
+
+            <div class="dash-stat-card">
+              <div class="dash-stat-icon icon-tint-orange">
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="5" width="20" height="14" rx="2"></rect><line x1="2" y1="10" x2="22" y2="10"></line></svg>
+              </div>
+              <div class="dash-stat-content">
+                <div class="dash-stat-label">Available Commercial Credit</div>
+                <div class="dash-stat-value">$107,400.00</div>
+                <div class="dash-stat-trend text-muted">
+                  Net-30 Terms &bull; Next Invoice Nov 1
+                </div>
+              </div>
+            </div>
+
+          </div>
+
+          <!-- Active Priority Banner -->
+          <div class="dash-alert-card">
+            <div class="dash-alert-icon">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 14 14"></polyline></svg>
+            </div>
+            <div class="dash-alert-content">
+              <h4 class="dash-alert-title">Active Freight Priority: PO #TTN-884210 is in transit to Bridge Sector 4</h4>
+              <p class="dash-alert-desc">Loaded with 4,500 pcs ASTM A325 Heavy Structural Hex Bolts. ETA: Today, 3:30 PM CST via Titan Dedicated Fleet Truck #42.</p>
+            </div>
+            <a href="#order-tracking" class="btn btn-primary btn-sm" style="white-space: nowrap;">Track Live GPS</a>
+          </div>
+        </section>
+
+        <!-- ==========================================================================
+             SECTION 2: PRODUCT CATALOG (Fast B2B Ordering Grid)
+             ========================================================================== -->
+        <section class="dash-section" id="catalog">
+          <div class="dash-section-header">
+            <div>
+              <span class="badge" style="margin-bottom: 6px;">Wholesale Inventory</span>
+              <h2 class="dash-section-title">2. Browse Contract Product Catalog</h2>
+              <p class="dash-page-subtitle">Contract-locked unit pricing with instant stock availability and batch MTR archives.</p>
+            </div>
+            <div class="dash-filter-pill-row">
+              <button class="dash-cat-pill active" data-filter="all">All SKUs</button>
+              <button class="dash-cat-pill" data-filter="hex">Hex Bolts</button>
+              <button class="dash-cat-pill" data-filter="nuts">Heavy Nuts</button>
+              <button class="dash-cat-pill" data-filter="washers">Washers</button>
+              <button class="dash-cat-pill" data-filter="anchors">Anchors</button>
+            </div>
+          </div>
+
+          <div class="dash-catalog-grid">
+            
+            <!-- Item 1 -->
+            <div class="dash-product-card" data-category="hex bolts all">
+              <div class="dash-prod-top">
+                <span class="badge-stock in-stock">450k pcs in Stock</span>
+                <span class="dash-sku">SKU: TTN-HEX-A325</span>
+              </div>
+              <h3 class="dash-prod-name">ASTM A325 Structural Hex Bolt Assembly</h3>
+              <div class="dash-prod-specs">
+                <div><span>Size:</span> 3/4" - 10 &times; 3-1/2"</div>
+                <div><span>Material:</span> Heat Treated Medium Carbon Steel</div>
+                <div><span>Finish:</span> Hot-Dip Galvanized (ASTM A153)</div>
+                <div><span>MOQ:</span> 500 pcs (1 Master Keg)</div>
+              </div>
+              <div class="dash-prod-footer">
+                <div class="dash-price-box">
+                  <span class="price-val">$1.42</span>
+                  <span class="price-unit">/ pc (Contract Rate)</span>
+                </div>
+                <button class="btn btn-primary btn-sm add-reorder-btn" data-sku="TTN-HEX-A325" data-name="ASTM A325 Structural Hex Bolt">
+                  + Add to Reorder
+                </button>
+              </div>
+            </div>
+
+            <!-- Item 2 -->
+            <div class="dash-product-card" data-category="hex bolts all">
+              <div class="dash-prod-top">
+                <span class="badge-stock in-stock">260k pcs in Stock</span>
+                <span class="dash-sku">SKU: TTN-HEX-109</span>
+              </div>
+              <h3 class="dash-prod-name">Grade 10.9 Flange Structural Hex Bolt</h3>
+              <div class="dash-prod-specs">
+                <div><span>Size:</span> M16 &times; 65mm High Tensile</div>
+                <div><span>Material:</span> Alloy Steel Quenched &amp; Tempered</div>
+                <div><span>Finish:</span> Black Oxide / Geomet Coated</div>
+                <div><span>MOQ:</span> 500 pcs (1 Master Keg)</div>
+              </div>
+              <div class="dash-prod-footer">
+                <div class="dash-price-box">
+                  <span class="price-val">$0.94</span>
+                  <span class="price-unit">/ pc (Contract Rate)</span>
+                </div>
+                <button class="btn btn-primary btn-sm add-reorder-btn" data-sku="TTN-HEX-109" data-name="Grade 10.9 Flange Hex Bolt">
+                  + Add to Reorder
+                </button>
+              </div>
+            </div>
+
+            <!-- Item 3 -->
+            <div class="dash-product-card" data-category="nuts all">
+              <div class="dash-prod-top">
+                <span class="badge-stock in-stock">620k pcs in Stock</span>
+                <span class="dash-sku">SKU: TTN-NUT-2H</span>
+              </div>
+              <h3 class="dash-prod-name">ASTM A194 Grade 2H Heavy Hex Nut</h3>
+              <div class="dash-prod-specs">
+                <div><span>Size:</span> 3/4" - 10 UNC Heavy Hex</div>
+                <div><span>Proof Load:</span> 175,000 PSI High Tensile</div>
+                <div><span>Finish:</span> Plain Black Thermal Phosphate</div>
+                <div><span>MOQ:</span> 1,000 pcs (2 Master Kegs)</div>
+              </div>
+              <div class="dash-prod-footer">
+                <div class="dash-price-box">
+                  <span class="price-val">$0.68</span>
+                  <span class="price-unit">/ pc (Contract Rate)</span>
+                </div>
+                <button class="btn btn-primary btn-sm add-reorder-btn" data-sku="TTN-NUT-2H" data-name="ASTM A194 Gr 2H Heavy Hex Nut">
+                  + Add to Reorder
+                </button>
+              </div>
+            </div>
+
+            <!-- Item 4 -->
+            <div class="dash-product-card" data-category="washers all">
+              <div class="dash-prod-top">
+                <span class="badge-stock in-stock">890k pcs in Stock</span>
+                <span class="dash-sku">SKU: TTN-WSH-F436</span>
+              </div>
+              <h3 class="dash-prod-name">ASTM F436 Hardened Steel Structural Washer</h3>
+              <div class="dash-prod-specs">
+                <div><span>Size:</span> 3/4" ID &times; 1-15/32" OD &times; 0.160" Thk</div>
+                <div><span>Hardness:</span> Rockwell C38 - C45</div>
+                <div><span>Finish:</span> Mechanically Galvanized</div>
+                <div><span>MOQ:</span> 2,000 pcs (Bulk Crate)</div>
+              </div>
+              <div class="dash-prod-footer">
+                <div class="dash-price-box">
+                  <span class="price-val">$0.24</span>
+                  <span class="price-unit">/ pc (Contract Rate)</span>
+                </div>
+                <button class="btn btn-primary btn-sm add-reorder-btn" data-sku="TTN-WSH-F436" data-name="ASTM F436 Hardened Washer">
+                  + Add to Reorder
+                </button>
+              </div>
+            </div>
+
+            <!-- Item 5 -->
+            <div class="dash-product-card" data-category="anchors all">
+              <div class="dash-prod-top">
+                <span class="badge-stock in-stock">120k pcs in Stock</span>
+                <span class="dash-sku">SKU: TTN-ANC-WDG</span>
+              </div>
+              <h3 class="dash-prod-name">Heavy Duty Stainless Steel Wedge Concrete Anchor</h3>
+              <div class="dash-prod-specs">
+                <div><span>Size:</span> 5/8" &times; 6" Length</div>
+                <div><span>Material:</span> AISI 316 Marine Grade Stainless</div>
+                <div><span>Approvals:</span> ICC-ES Cracked Concrete Seismic</div>
+                <div><span>MOQ:</span> 250 pcs (Carton)</div>
+              </div>
+              <div class="dash-prod-footer">
+                <div class="dash-price-box">
+                  <span class="price-val">$4.85</span>
+                  <span class="price-unit">/ pc (Contract Rate)</span>
+                </div>
+                <button class="btn btn-primary btn-sm add-reorder-btn" data-sku="TTN-ANC-WDG" data-name="SS316 Concrete Wedge Anchor">
+                  + Add to Reorder
+                </button>
+              </div>
+            </div>
+
+          </div>
+        </section>
+
+        <!-- ==========================================================================
+             SECTION 3: RECENT ORDERS (Interactive PO History Table)
+             ========================================================================== -->
+        <section class="dash-section" id="recent-orders">
+          <div class="dash-section-header">
+            <div>
+              <span class="badge badge-orange" style="margin-bottom: 6px;">Contract Procurement History</span>
+              <h2 class="dash-section-title">3. Recent Purchase Orders</h2>
+              <p class="dash-page-subtitle">Track shipment milestones, invoices, and download heat lot Material Test Reports.</p>
+            </div>
+            <div class="dash-header-actions">
+              <button class="btn btn-outline btn-sm" onclick="alert('Exporting complete PO ledger to CSV...');">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="7 10 12 15 17 10"></polyline><line x1="12" y1="15" x2="12" y2="3"></line></svg>
+                Export CSV
+              </button>
+            </div>
+          </div>
+
+          <!-- Controlled Table Container (No Page Horizontal Scroll) -->
+          <div class="dash-table-card">
+            <div class="dash-table-responsive">
+              <table class="dash-table" aria-label="Purchase Order History">
+                <thead>
+                  <tr>
+                    <th>PO Number</th>
+                    <th>Order Date</th>
+                    <th>Primary Fastener Items</th>
+                    <th>Quantity / Weight</th>
+                    <th>Total Amount</th>
+                    <th>Status</th>
+                    <th>MTR Certificate</th>
+                    <th>Actions</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  
+                  <tr>
+                    <td>
+                      <strong class="text-primary">PO #TTN-884210</strong>
+                      <div class="table-sub">Jobsite: Bridge Sector 4</div>
+                    </td>
+                    <td>Oct 08, 2026</td>
+                    <td>
+                      <strong>ASTM A325 Heavy Hex Bolts</strong>
+                      <div class="table-sub">3/4" &times; 3-1/2" HDG + 2H Nuts</div>
+                    </td>
+                    <td>4,500 pcs (1.8 MT)</td>
+                    <td><strong>$6,390.00</strong></td>
+                    <td>
+                      <span class="status-badge status-in-transit">
+                        <span class="pulse-dot"></span>
+                        In Transit
+                      </span>
+                    </td>
+                    <td>
+                      <a href="#mtr-download" class="btn-table-mtr" onclick="alert('Downloading Certified EN 10204 3.1 MTR for Heat #HT-992014...'); return false;">
+                        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline></svg>
+                        MTR #992014
+                      </a>
+                    </td>
+                    <td>
+                      <a href="#order-tracking" class="btn btn-primary btn-xs">Track Live</a>
+                    </td>
+                  </tr>
+
+                  <tr>
+                    <td>
+                      <strong class="text-primary">PO #TTN-884195</strong>
+                      <div class="table-sub">Warehouse: Chicago Dock B</div>
+                    </td>
+                    <td>Oct 04, 2026</td>
+                    <td>
+                      <strong>Gr 2H Nuts &amp; F436 Washers</strong>
+                      <div class="table-sub">3/4" UNC Black Oxide</div>
+                    </td>
+                    <td>10,000 pcs (2.4 MT)</td>
+                    <td><strong>$9,200.00</strong></td>
+                    <td>
+                      <span class="status-badge status-delivered">
+                        <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                        Delivered
+                      </span>
+                    </td>
+                    <td>
+                      <a href="#mtr-download" class="btn-table-mtr" onclick="alert('Downloading Certified MTR for Heat #HT-881203...'); return false;">
+                        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline></svg>
+                        MTR #881203
+                      </a>
+                    </td>
+                    <td>
+                      <button class="btn btn-outline btn-xs" onclick="alert('Reorder items added to Reorder Queue.');">Reorder</button>
+                    </td>
+                  </tr>
+
+                  <tr>
+                    <td>
+                      <strong class="text-primary">PO #TTN-884012</strong>
+                      <div class="table-sub">Jobsite: Offshore Pier 9</div>
+                    </td>
+                    <td>Sep 28, 2026</td>
+                    <td>
+                      <strong>AISI 316 Stainless Wedge Anchors</strong>
+                      <div class="table-sub">5/8" &times; 6" Seismic Rated</div>
+                    </td>
+                    <td>2,000 pcs (0.8 MT)</td>
+                    <td><strong>$9,700.00</strong></td>
+                    <td>
+                      <span class="status-badge status-delivered">
+                        <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                        Delivered
+                      </span>
+                    </td>
+                    <td>
+                      <a href="#mtr-download" class="btn-table-mtr" onclick="alert('Downloading Certified MTR for Heat #HT-774011...'); return false;">
+                        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline></svg>
+                        MTR #774011
+                      </a>
+                    </td>
+                    <td>
+                      <button class="btn btn-outline btn-xs" onclick="alert('Reorder items added to Reorder Queue.');">Reorder</button>
+                    </td>
+                  </tr>
+
+                  <tr>
+                    <td>
+                      <strong class="text-primary">PO #TTN-883908</strong>
+                      <div class="table-sub">Facility: Houston Plant 1</div>
+                    </td>
+                    <td>Sep 15, 2026</td>
+                    <td>
+                      <strong>Class 10.9 Metric Flange Bolts</strong>
+                      <div class="table-sub">M16 &times; 65mm Geomet Coated</div>
+                    </td>
+                    <td>8,000 pcs (1.9 MT)</td>
+                    <td><strong>$11,840.00</strong></td>
+                    <td>
+                      <span class="status-badge status-delivered">
+                        <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                        Delivered
+                      </span>
+                    </td>
+                    <td>
+                      <a href="#mtr-download" class="btn-table-mtr" onclick="alert('Downloading Certified MTR for Heat #HT-661902...'); return false;">
+                        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline></svg>
+                        MTR #661902
+                      </a>
+                    </td>
+                    <td>
+                      <button class="btn btn-outline btn-xs" onclick="alert('Reorder items added to Reorder Queue.');">Reorder</button>
+                    </td>
+                  </tr>
+
+                  <tr>
+                    <td>
+                      <strong class="text-primary">PO #TTN-884222</strong>
+                      <div class="table-sub">Jobsite: Tunnel Grid B</div>
+                    </td>
+                    <td>Oct 08, 2026</td>
+                    <td>
+                      <strong>ASTM A490 High Strength TC Bolts</strong>
+                      <div class="table-sub">7/8" &times; 4" Geomet 500</div>
+                    </td>
+                    <td>3,200 pcs (1.6 MT)</td>
+                    <td><strong>$7,680.00</strong></td>
+                    <td>
+                      <span class="status-badge status-processing">
+                        Staging at Hub
+                      </span>
+                    </td>
+                    <td>
+                      <span class="text-muted" style="font-size: 0.8rem;">Pending Final QA</span>
+                    </td>
+                    <td>
+                      <button class="btn btn-outline btn-xs" onclick="alert('PO #TTN-884222 is currently undergoing automated optical thread sorting.');">Status</button>
+                    </td>
+                  </tr>
+
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </section>
+
+        <!-- ==========================================================================
+             SECTION 4: REORDER REQUESTS (1-Click Bulk Reorder System)
+             ========================================================================== -->
+        <section class="dash-section" id="reorder-requests">
+          <div class="dash-section-header">
+            <div>
+              <span class="badge" style="margin-bottom: 6px;">Fast Replenishment</span>
+              <h2 class="dash-section-title">4. Bulk Reorder Requests</h2>
+              <p class="dash-page-subtitle">Adjust replenishment quantities and generate instant Net-30 purchase orders.</p>
+            </div>
+            <div class="dash-header-actions">
+              <button class="btn btn-outline btn-sm" id="clearReorderQueue">Clear Queue</button>
+            </div>
+          </div>
+
+          <div class="dash-card">
+            <div class="reorder-items-list">
+              
+              <!-- Item 1 -->
+              <div class="reorder-row">
+                <div class="reorder-info">
+                  <span class="reorder-sku">SKU: TTN-HEX-A325-1</span>
+                  <h4 class="reorder-title">ASTM A325 Structural Hex Bolt (3/4" - 10 &times; 3-1/2" HDG)</h4>
+                  <div class="reorder-meta">Packaged in 500 pc Steel Kegs &bull; Unit: $1.42 / pc</div>
+                </div>
+                <div class="reorder-qty-control">
+                  <button type="button" class="qty-btn" onclick="adjustQty(this, -500)">-</button>
+                  <input type="number" class="qty-input" value="2500" min="500" step="500" onchange="updateReorderTotals()">
+                  <button type="button" class="qty-btn" onclick="adjustQty(this, 500)">+</button>
+                  <span class="qty-unit-label">pcs</span>
+                </div>
+                <div class="reorder-line-total">
+                  <span class="total-label">Subtotal:</span>
+                  <strong class="line-amount" data-unit-price="1.42">$3,550.00</strong>
+                </div>
+              </div>
+
+              <!-- Item 2 -->
+              <div class="reorder-row">
+                <div class="reorder-info">
+                  <span class="reorder-sku">SKU: TTN-NUT-2H-075</span>
+                  <h4 class="reorder-title">ASTM A194 Gr 2H Heavy Hex Nut (3/4" - 10 UNC Black)</h4>
+                  <div class="reorder-meta">Packaged in 1,000 pc Master Kegs &bull; Unit: $0.68 / pc</div>
+                </div>
+                <div class="reorder-qty-control">
+                  <button type="button" class="qty-btn" onclick="adjustQty(this, -1000)">-</button>
+                  <input type="number" class="qty-input" value="5000" min="1000" step="1000" onchange="updateReorderTotals()">
+                  <button type="button" class="qty-btn" onclick="adjustQty(this, 1000)">+</button>
+                  <span class="qty-unit-label">pcs</span>
+                </div>
+                <div class="reorder-line-total">
+                  <span class="total-label">Subtotal:</span>
+                  <strong class="line-amount" data-unit-price="0.68">$3,400.00</strong>
+                </div>
+              </div>
+
+              <!-- Item 3 -->
+              <div class="reorder-row">
+                <div class="reorder-info">
+                  <span class="reorder-sku">SKU: TTN-WSH-F436-075</span>
+                  <h4 class="reorder-title">ASTM F436 Hardened Structural Washer (3/4" Mechanically Galv)</h4>
+                  <div class="reorder-meta">Packaged in 2,000 pc Bulk Crates &bull; Unit: $0.24 / pc</div>
+                </div>
+                <div class="reorder-qty-control">
+                  <button type="button" class="qty-btn" onclick="adjustQty(this, -2000)">-</button>
+                  <input type="number" class="qty-input" value="6000" min="2000" step="2000" onchange="updateReorderTotals()">
+                  <button type="button" class="qty-btn" onclick="adjustQty(this, 2000)">+</button>
+                  <span class="qty-unit-label">pcs</span>
+                </div>
+                <div class="reorder-line-total">
+                  <span class="total-label">Subtotal:</span>
+                  <strong class="line-amount" data-unit-price="0.24">$1,440.00</strong>
+                </div>
+              </div>
+
+            </div>
+
+            <!-- Reorder Summary & Submit Bar -->
+            <div class="reorder-submit-bar">
+              <div class="reorder-summary-box">
+                <div class="summary-line">
+                  <span>Reorder Quantity:</span>
+                  <strong id="reorderTotalUnits">13,500 pcs (3.2 Tonnes)</strong>
+                </div>
+                <div class="summary-line">
+                  <span>Payment Terms:</span>
+                  <strong>Commercial Net-30 Account</strong>
+                </div>
+                <div class="summary-total-price">
+                  <span>Estimated Total PO:</span>
+                  <strong id="reorderGrandTotal">$8,390.00</strong>
+                </div>
+              </div>
+              <div class="reorder-submit-actions">
+                <div class="form-field" style="margin-bottom: 8px;">
+                  <label class="form-label" style="font-size: 0.78rem;">Destination Jobsite / Staging Bay</label>
+                  <select class="form-select" style="font-size: 0.85rem; padding: 8px 12px;">
+                    <option selected>Bridge Sector 4 (Houston Corridor)</option>
+                    <option>Chicago Dock B Manufacturing</option>
+                    <option>Offshore Pier 9 Coastal Hub</option>
+                  </select>
+                </div>
+                <button type="button" class="btn btn-primary btn-lg" style="width: 100%;" onclick="alert('Bulk Reorder PO #TTN-884230 created successfully! Staging mobilization initiated at Houston Master Center.');">
+                  Submit Bulk Reorder PO
+                </button>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- ==========================================================================
+             SECTION 5: ORDER TRACKING (Live Freight Telemetry & Stepper)
+             ========================================================================== -->
+        <section class="dash-section" id="order-tracking">
+          <div class="dash-section-header">
+            <div>
+              <span class="badge badge-orange" style="margin-bottom: 6px;">GPS Telemetry</span>
+              <h2 class="dash-section-title">5. Real-Time Order Tracking</h2>
+              <p class="dash-page-subtitle">Track priority shipment milestones from factory optical sorting to jobsite unloading.</p>
+            </div>
+            <div class="dash-header-actions">
+              <span class="status-badge status-in-transit">
+                <span class="pulse-dot"></span> Live Tracking Active
+              </span>
+            </div>
+          </div>
+
+          <div class="dash-card">
+            <div class="tracking-top-grid">
+              <div>
+                <div class="track-meta-label">Active Shipment Number</div>
+                <div class="track-meta-val">PO #TTN-884210 &bull; Freight Bill #TX-78401</div>
+              </div>
+              <div>
+                <div class="track-meta-label">Estimated Jobsite Delivery</div>
+                <div class="track-meta-val text-primary">Today &bull; 3:30 PM CST</div>
+              </div>
+              <div>
+                <div class="track-meta-label">Carrier &amp; Dispatch Fleet</div>
+                <div class="track-meta-val">Titan Express Freight (Unit #42)</div>
+              </div>
+              <div>
+                <div class="track-meta-label">Delivery Staging Area</div>
+                <div class="track-meta-val">Keystone Staging Bay 3 (Crane 2)</div>
+              </div>
+            </div>
+
+            <!-- Visual Progress Stepper -->
+            <div class="tracking-stepper">
+              
+              <!-- Step 1 (Done) -->
+              <div class="step-item step-completed">
+                <div class="step-circle">
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                </div>
+                <div class="step-content">
+                  <div class="step-title">PO Confirmed</div>
+                  <div class="step-date">Oct 08 &bull; 06:15 AM</div>
+                </div>
+              </div>
+
+              <!-- Step 2 (Done) -->
+              <div class="step-item step-completed">
+                <div class="step-circle">
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                </div>
+                <div class="step-content">
+                  <div class="step-title">Optical QA Passed</div>
+                  <div class="step-date">Oct 08 &bull; 08:30 AM</div>
+                </div>
+              </div>
+
+              <!-- Step 3 (Done) -->
+              <div class="step-item step-completed">
+                <div class="step-circle">
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                </div>
+                <div class="step-content">
+                  <div class="step-title">Pallet Staged &amp; Loaded</div>
+                  <div class="step-date">Oct 08 &bull; 10:45 AM</div>
+                </div>
+              </div>
+
+              <!-- Step 4 (Active / Current) -->
+              <div class="step-item step-active">
+                <div class="step-circle">
+                  <span class="step-active-dot"></span>
+                </div>
+                <div class="step-content">
+                  <div class="step-title">In Transit (On Route)</div>
+                  <div class="step-date">Houston I-10 West (Mile 64)</div>
+                </div>
+              </div>
+
+              <!-- Step 5 (Pending) -->
+              <div class="step-item step-pending">
+                <div class="step-circle">5</div>
+                <div class="step-content">
+                  <div class="step-title">Jobsite Offload</div>
+                  <div class="step-date">Est. 3:30 PM CST</div>
+                </div>
+              </div>
+
+            </div>
+
+            <!-- Live Telemetry Details Box -->
+            <div class="telemetry-box">
+              <div class="telemetry-item">
+                <span class="telemetry-label">Assigned Driver:</span>
+                <span class="telemetry-value">Marcus Sterling (Certified Crane Rigger)</span>
+              </div>
+              <div class="telemetry-item">
+                <span class="telemetry-label">Driver Contact:</span>
+                <span class="telemetry-value">(713) 555-0199</span>
+              </div>
+              <div class="telemetry-item">
+                <span class="telemetry-label">Cargo Weight:</span>
+                <span class="telemetry-value">4,500 pcs &bull; 3,960 lbs (1.8 MT)</span>
+              </div>
+              <div class="telemetry-item">
+                <span class="telemetry-label">MTR Heat Lot:</span>
+                <span class="telemetry-value">#HT-992014 (Digital Manifest Attached)</span>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- ==========================================================================
+             SECTION 6: BUSINESS ACCOUNT (Credit, Billing & Compliance)
+             ========================================================================== -->
+        <section class="dash-section" id="business-account">
+          <div class="dash-section-header">
+            <div>
+              <span class="badge" style="margin-bottom: 6px;">Enterprise Credentials</span>
+              <h2 class="dash-section-title">6. Business Account Profile</h2>
+              <p class="dash-page-subtitle">Commercial credit line terms, tax exemption verification, and corporate procurement authorization.</p>
+            </div>
+          </div>
+
+          <div class="account-cards-grid">
+            
+            <!-- Card 1: Company Profile -->
+            <div class="account-card">
+              <div class="account-card-header">
+                <div class="icon-tint-box icon-tint-orange">
+                  <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path><circle cx="12" cy="7" r="4"></circle></svg>
+                </div>
+                <div>
+                  <h3 class="account-card-title">Organization Profile</h3>
+                  <div class="account-card-sub">Keystone Construction Corp</div>
+                </div>
+              </div>
+              <div class="account-detail-list">
+                <div class="detail-row">
+                  <span>Client Account ID:</span>
+                  <strong>TTN-884210-CORP</strong>
+                </div>
+                <div class="detail-row">
+                  <span>Contract Classification:</span>
+                  <strong>Tier-1 Master Contractor</strong>
+                </div>
+                <div class="detail-row">
+                  <span>Billing Address:</span>
+                  <span>10400 Highway 290, Suite 800, Houston, TX 77065</span>
+                </div>
+                <div class="detail-row">
+                  <span>Primary Purchasing Officer:</span>
+                  <span>Johnathan Davis (procurement@keystonecorp.com)</span>
+                </div>
+              </div>
+            </div>
+
+            <!-- Card 2: Commercial Credit & Tax -->
+            <div class="account-card">
+              <div class="account-card-header">
+                <div class="icon-tint-box">
+                  <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="5" width="20" height="14" rx="2"></rect><line x1="2" y1="10" x2="22" y2="10"></line></svg>
+                </div>
+                <div>
+                  <h3 class="account-card-title">Net-30 Credit Facility</h3>
+                  <div class="account-card-sub">Active &amp; Approved</div>
+                </div>
+              </div>
+              <div class="account-detail-list">
+                <div class="detail-row">
+                  <span>Credit Limit:</span>
+                  <strong>$150,000.00 USD</strong>
+                </div>
+                <div class="detail-row">
+                  <span>Available Balance:</span>
+                  <strong class="text-success">$107,400.00 USD</strong>
+                </div>
+                <div class="detail-row">
+                  <span>Payment Terms:</span>
+                  <span>Consolidated Monthly Net-30</span>
+                </div>
+                <div class="detail-row">
+                  <span>Sales Tax Exemption:</span>
+                  <span class="badge-verified">
+                    <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                    Verified #TX-992014
+                  </span>
+                </div>
+              </div>
+            </div>
+
+          </div>
+        </section>
+
+        <!-- ==========================================================================
+             SECTION 7: SUPPORT & DEDICATED TECHNICAL MANAGER
+             ========================================================================== -->
+        <section class="dash-section" id="support">
+          <div class="dash-section-header">
+            <div>
+              <span class="badge badge-orange" style="margin-bottom: 6px;">Technical Desk</span>
+              <h2 class="dash-section-title">7. Dedicated Fastener Engineering Support</h2>
+              <p class="dash-page-subtitle">Direct application engineering support and 24/7 plant shutdown hotshot dispatch.</p>
+            </div>
+          </div>
+
+          <div class="support-grid-split">
+            
+            <!-- Technical Account Manager Card -->
+            <div class="tech-manager-card">
+              <div class="manager-avatar-wrap">
+                <div class="manager-avatar">DR</div>
+                <div>
+                  <h3 class="manager-name">David Reynolds, P.E.</h3>
+                  <div class="manager-title">Senior Structural Fastener Engineer</div>
+                  <div class="manager-meta">Assigned Account Specialist (6+ Yrs with Keystone)</div>
+                </div>
+              </div>
+              
+              <div class="manager-contact-links">
+                <a href="tel:18005558482" class="manager-link-item">
+                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path></svg>
+                  <span>Direct Desk: (713) 555-8912</span>
+                </a>
+                <a href="mailto:dreynolds@titanfasteners.com" class="manager-link-item">
+                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="4" width="20" height="16" rx="2"></rect><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"></path></svg>
+                  <span>dreynolds@titanfasteners.com</span>
+                </a>
+                <div class="manager-link-item" style="color: var(--warm-orange); font-weight: 700;">
+                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg>
+                  <span>24/7 Plant Shutdown Hotline: Ext. 4</span>
+                </div>
+              </div>
+            </div>
+
+            <!-- Quick Inquiry Card -->
+            <div class="dash-card">
+              <h3 style="font-size: 1.2rem; font-weight: 800; color: var(--text-primary); margin: 0 0 6px;">Submit Engineering Inquiry</h3>
+              <p style="font-size: 0.86rem; color: var(--text-secondary); margin: 0 0 16px;">Request drawing reviews, non-standard coating specs, or emergency expedited air-freight.</p>
+              
+              <form onsubmit="event.preventDefault(); alert('Inquiry sent directly to David Reynolds, P.E. Guaranteed response within 15 minutes.');">
+                <div class="form-field" style="margin-bottom: 12px;">
+                  <label class="form-label" style="font-size: 0.82rem;">Inquiry Subject</label>
+                  <select class="form-select" style="font-size: 0.88rem; padding: 8px 12px;">
+                    <option>Technical ASTM Torque Spec Consultation</option>
+                    <option>MTR Heat Lot Metallurgical Archive Request</option>
+                    <option>Emergency Jobsite Shutdown Expedited Dispatch</option>
+                    <option>Consignment VMI Smart-Bin Adjustment</option>
+                  </select>
+                </div>
+                <div class="form-field" style="margin-bottom: 16px;">
+                  <label class="form-label" style="font-size: 0.82rem;">Message / Hardware Specs</label>
+                  <textarea class="form-textarea" rows="3" placeholder="Specify PO # or hardware requirements..." style="font-size: 0.88rem; min-height: 80px;" required></textarea>
+                </div>
+                <button type="submit" class="btn btn-primary btn-sm" style="width: 100%;">
+                  Send Priority Message to Engineering Desk
+                </button>
+              </form>
+            </div>
+
+          </div>
+        </section>
+
+      </main>
+
+      <!-- DASHBOARD FOOTER -->
+      <footer class="dash-footer">
+        <div>&copy; 2026 TITAN Fasteners &amp; Hardware Supply Distribution Corp. &bull; Business Client Portal</div>
+        <div>ISO 9001:2015 Registered Supply Chain &bull; 256-Bit SSL Encrypted</div>
+      </footer>
+
+    </div>
+
+  </div>
+
+  <script src="assets/js/main.js"></script>
+  <script>
+    // Tab Switching Function (Single-page view isolation)
+    function switchDashTab(targetHash) {
+      if (!targetHash) targetHash = '#overview';
+      const targetId = targetHash.replace('#', '');
+      const targetSection = document.getElementById(targetId);
+      
+      if (!targetSection || !targetSection.classList.contains('dash-section')) {
+        // Fallback to overview if not found
+        const overviewSec = document.getElementById('overview');
+        if (overviewSec) {
+          document.querySelectorAll('.dash-section').forEach(s => s.classList.remove('active-tab'));
+          overviewSec.classList.add('active-tab');
+          document.querySelectorAll('.dash-nav-link').forEach(l => {
+            l.classList.toggle('active', l.getAttribute('href') === '#overview');
+          });
+        }
+        return;
+      }
+
+      // Hide all other sections, display only the target tab
+      document.querySelectorAll('.dash-section').forEach(sec => {
+        sec.classList.remove('active-tab');
+      });
+      targetSection.classList.add('active-tab');
+
+      // Update sidebar nav active state
+      document.querySelectorAll('.dash-nav-link').forEach(link => {
+        const linkHref = link.getAttribute('href');
+        if (linkHref === `#${targetId}`) {
+          link.classList.add('active');
+        } else {
+          link.classList.remove('active');
+        }
+      });
+
+      // Scroll smoothly to top of main area
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+
+    // Intercept clicks on any internal section links
+    document.addEventListener('click', (e) => {
+      const link = e.target.closest('a[href^="#"]');
+      if (!link) return;
+      const href = link.getAttribute('href');
+      if (href && href.length > 1 && href !== '#mtr-download') {
+        const targetSec = document.querySelector(href);
+        if (targetSec && targetSec.classList.contains('dash-section')) {
+          e.preventDefault();
+          history.pushState(null, '', href);
+          switchDashTab(href);
+          closeDashSidebar();
+        }
+      }
+    });
+
+    // Handle browser back/forward buttons
+    window.addEventListener('popstate', () => {
+      switchDashTab(window.location.hash || '#overview');
+    });
+
+    // Initialize active tab on load
+    window.addEventListener('DOMContentLoaded', () => {
+      switchDashTab(window.location.hash || '#overview');
+    });
+
+    // Quantity adjustments & totals calculation
+    function adjustQty(btn, delta) {
+      const input = btn.parentElement.querySelector('.qty-input');
+      let val = parseInt(input.value) || 0;
+      let min = parseInt(input.min) || 0;
+      val = Math.max(min, val + delta);
+      input.value = val;
+      updateReorderTotals();
+    }
+
+    function updateReorderTotals() {
+      let totalUnits = 0;
+      let grandTotal = 0;
+      
+      document.querySelectorAll('.reorder-row').forEach(row => {
+        const input = row.querySelector('.qty-input');
+        const priceElem = row.querySelector('.line-amount');
+        const qty = parseInt(input.value) || 0;
+        const unitPrice = parseFloat(priceElem.getAttribute('data-unit-price')) || 0;
+        const lineTotal = qty * unitPrice;
+        
+        priceElem.textContent = '$' + lineTotal.toLocaleString('en-US', {minimumFractionDigits: 2, maximumFractionDigits: 2});
+        totalUnits += qty;
+        grandTotal += lineTotal;
+      });
+
+      const totalUnitsElem = document.getElementById('reorderTotalUnits');
+      const grandTotalElem = document.getElementById('reorderGrandTotal');
+      if (totalUnitsElem) {
+        totalUnitsElem.textContent = totalUnits.toLocaleString('en-US') + ' pcs';
+      }
+      if (grandTotalElem) {
+        grandTotalElem.textContent = '$' + grandTotal.toLocaleString('en-US', {minimumFractionDigits: 2, maximumFractionDigits: 2});
+      }
+    }
+
+    // Catalog quick add to reorder
+    document.querySelectorAll('.add-reorder-btn').forEach(btn => {
+      btn.addEventListener('click', () => {
+        const name = btn.getAttribute('data-name');
+        alert(name + ' added to your Bulk Reorder Queue!');
+      });
+    });
+
+    // Mobile sidebar toggle
+    const dashHamburgerBtn = document.getElementById('dashHamburgerBtn');
+    const dashSidebar = document.getElementById('dashboardSidebar');
+    const dashSidebarBackdrop = document.getElementById('dashSidebarBackdrop');
+    const dashSidebarClose = document.getElementById('dashSidebarClose');
+
+    function openDashSidebar() {
+      dashSidebar?.classList.add('active');
+      dashSidebarBackdrop?.classList.add('active');
+      document.body.style.overflow = 'hidden';
+    }
+
+    function closeDashSidebar() {
+      dashSidebar?.classList.remove('active');
+      dashSidebarBackdrop?.classList.remove('active');
+      document.body.style.overflow = '';
+    }
+
+    dashHamburgerBtn?.addEventListener('click', openDashSidebar);
+    dashSidebarClose?.addEventListener('click', closeDashSidebar);
+    dashSidebarBackdrop?.addEventListener('click', closeDashSidebar);
+  </script>
+  <script src="assets/js/main.js"></script>
+</body>
+</html>

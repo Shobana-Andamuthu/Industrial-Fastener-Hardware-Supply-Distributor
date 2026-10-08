@@ -1,0 +1,647 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr" data-theme="light">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Bulk Ordering &amp; Custom RFQ | TITAN FASTENERS</title>
+  <meta name="description" content="Request enterprise wholesale pricing, pallet-tier quotes, and vendor managed inventory (VMI) solutions for commercial contractors and manufacturers.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Space+Grotesk:wght@600;700;800&display=swap" rel="stylesheet">
+  <link rel="icon" type="image/svg+xml" href="assets/images/favicon.svg">
+  <link rel="apple-touch-icon" href="assets/images/favicon.svg">
+  <link rel="stylesheet" href="assets/css/style.css">
+</head>
+<body>
+
+  <!-- PAGE PRELOADER -->
+  <div class="page-preloader" id="pagePreloader">
+    <div class="preloader-inner">
+      <div class="preloader-brand">
+        <div class="preloader-spinner-wrap">
+          <div class="preloader-ring"></div>
+          <div class="preloader-bolt-icon">
+            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"></path></svg>
+          </div>
+        </div>
+        <div class="preloader-logo-text">
+          <span class="p-title">TITAN</span>
+          <span class="p-sub">INDUSTRIAL SUPPLY</span>
+        </div>
+      </div>
+      <div class="preloader-bar">
+        <div class="preloader-progress"></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- NAVBAR -->
+  <header class="navbar-wrapper">
+    <div class="container navbar">
+      <a href="index.html" class="brand-logo" aria-label="TITAN Fasteners Home">
+        <img src="assets/images/logo.svg" alt="TITAN Fasteners &amp; Supply" class="brand-logo-img logo-light" />
+        <img src="assets/images/logo-white.svg" alt="TITAN Fasteners &amp; Supply" class="brand-logo-img logo-dark" />
+      </a>
+
+      <nav aria-label="Main Navigation">
+        <ul class="nav-menu">
+          <li class="nav-dropdown">
+            <a href="index.html" class="nav-link">
+              Home 
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg>
+            </a>
+            <div class="nav-dropdown-menu">
+              <a href="index.html" class="nav-dropdown-item">Home 1 (Classic B2B)</a>
+              <a href="home-2.html" class="nav-dropdown-item">Home 2 (Modern Grid)</a>
+            </div>
+          </li>
+          <li><a href="catalog.html" class="nav-link">Product Catalog</a></li>
+          <li><a href="bulk-ordering.html" class="nav-link active">Bulk Ordering</a></li>
+          <li><a href="about.html" class="nav-link">About Us</a></li>
+          <li><a href="contact.html" class="nav-link">Contact</a></li>
+          <li><a href="dashboard.html" class="nav-link">Dashboard</a></li>
+        </ul>
+      </nav>
+
+      <div class="nav-actions">
+        <button class="icon-btn theme-toggle-btn" aria-label="Toggle theme">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path></svg>
+        </button>
+        <button class="icon-btn rtl-toggle-btn" aria-label="Toggle text direction">RTL</button>
+        <a href="login.html" class="btn btn-outline btn-sm">Login</a>
+        <a href="bulk-ordering.html" class="btn btn-primary btn-sm">Request Quote</a>
+        <button class="hamburger-btn" aria-label="Open mobile navigation menu">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="18" x2="21" y2="18"></line></svg>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- MOBILE NAVIGATION DRAWER -->
+  <div class="mobile-drawer-backdrop" aria-hidden="true">
+    <div class="mobile-drawer">
+      <div class="mobile-drawer-header">
+        <a href="index.html" class="brand-logo" aria-label="TITAN Fasteners Home">
+          <img src="assets/images/logo.svg" alt="TITAN Fasteners &amp; Supply" class="brand-logo-img logo-light" />
+          <img src="assets/images/logo-white.svg" alt="TITAN Fasteners &amp; Supply" class="brand-logo-img logo-dark" />
+        </a>
+        <button class="drawer-close-btn" aria-label="Close navigation menu">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
+        </button>
+      </div>
+      <div class="mobile-drawer-body">
+        <ul class="mobile-nav-list">
+          <li>
+            <button class="mobile-dropdown-header" data-target="m-bulk-home-drop">
+              <span>Home</span>
+              <svg class="dropdown-chevron" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"></polyline></svg>
+            </button>
+            <div id="m-bulk-home-drop" class="mobile-dropdown-content" style="display: none;">
+              <a href="index.html" class="mobile-nav-link">Home 1 (Classic B2B)</a>
+              <a href="home-2.html" class="mobile-nav-link">Home 2 (Modern Grid)</a>
+            </div>
+          </li>
+          <li><a href="catalog.html" class="mobile-nav-link">Product Catalog</a></li>
+          <li><a href="bulk-ordering.html" class="mobile-nav-link active">Bulk Ordering</a></li>
+          <li><a href="about.html" class="mobile-nav-link">About Us</a></li>
+          <li><a href="contact.html" class="mobile-nav-link">Contact</a></li>
+          <li><a href="dashboard.html" class="mobile-nav-link">Dashboard</a></li>
+        </ul>
+      </div>
+      <div class="mobile-drawer-footer">
+        <div style="display: flex; gap: 10px; justify-content: space-between;">
+          <button class="btn btn-outline btn-sm theme-toggle-btn" style="flex:1;">Theme</button>
+          <button class="btn btn-outline btn-sm rtl-toggle-btn" style="flex:1;">RTL</button>
+        </div>
+        <a href="login.html" class="btn btn-outline" style="width: 100%;">Client Login</a>
+        <a href="bulk-ordering.html" class="btn btn-primary" style="width: 100%;">Request Bulk Quote</a>
+      </div>
+    </div>
+  </div>
+
+  <main>
+    <!-- ==========================================================================
+         SECTION 1: HERO BANNER (Uniform Height 380px)
+         ========================================================================== -->
+    <section class="page-header" id="bulk-hero">
+      <div class="page-header-overlay"></div>
+      <div class="container">
+        <div class="page-header-content">
+          <nav class="breadcrumb-nav" aria-label="Breadcrumb">
+            <a href="index.html">Home</a>
+            <span class="breadcrumb-separator">/</span>
+            <span>Bulk Ordering</span>
+          </nav>
+          <span class="badge badge-orange">Enterprise Procurement Hub</span>
+          <h1 class="page-header-title">Bulk Fastener Ordering &amp; Custom Quotes</h1>
+          <p class="page-header-desc">
+            Direct mill-pricing, scheduled pallet logistics, vendor managed inventory (VMI), and tailored commercial credit lines for high-volume purchasers.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==========================================================================
+         SECTION 2: BULK ORDERING BENEFITS
+         ========================================================================== -->
+    <section class="section" id="bulk-benefits">
+      <div class="container">
+        <div class="section-header text-center">
+          <span class="badge">Commercial Advantage</span>
+          <h2 class="section-title">Why Enterprise Buyers Source Bulk with Titan</h2>
+          <p class="section-subtitle">Streamlined procurement designed to lower per-unit assembly costs and eliminate jobsite stockouts.</p>
+        </div>
+
+        <div class="bulk-benefits-grid">
+          <!-- Benefit 1 -->
+          <div class="bulk-benefit-card">
+            <div class="bulk-benefit-img-wrap">
+              <img src="assets/images/bulk-volume-pricing.jpg" alt="Tiered Volume Pricing - Wholesale Pallet Supply" class="bulk-benefit-img" loading="lazy">
+              <span class="bulk-benefit-badge">Up to 40% Off</span>
+            </div>
+            <div class="bulk-benefit-content">
+              <h3 class="bulk-benefit-title">Tiered Volume Pricing</h3>
+              <p class="bulk-benefit-desc">
+                Save up to 40% off list prices when purchasing in master kegs, shrink-wrapped pallets, or full 20ft container loads directly from master stock.
+              </p>
+            </div>
+          </div>
+
+          <!-- Benefit 2 -->
+          <div class="bulk-benefit-card">
+            <div class="bulk-benefit-img-wrap">
+              <img src="assets/images/bulk-stock-reserve.jpg" alt="Guaranteed Stock Reserve - Dedicated Warehouse Bins" class="bulk-benefit-img" loading="lazy">
+              <span class="bulk-benefit-badge">Zero Backorders</span>
+            </div>
+            <div class="bulk-benefit-content">
+              <h3 class="bulk-benefit-title">Guaranteed Stock Reserve</h3>
+              <p class="bulk-benefit-desc">
+                We allocate dedicated warehouse bin capacity for your recurring project SKUs, guaranteeing zero production delays or backorder waits.
+              </p>
+            </div>
+          </div>
+
+          <!-- Benefit 3 -->
+          <div class="bulk-benefit-card">
+            <div class="bulk-benefit-img-wrap">
+              <img src="assets/images/bulk-account-engineer.jpg" alt="Dedicated Account Engineer - Metallurgical Review" class="bulk-benefit-img" loading="lazy">
+              <span class="bulk-benefit-badge">BOM Review</span>
+            </div>
+            <div class="bulk-benefit-content">
+              <h3 class="bulk-benefit-title">Dedicated Account Engineer</h3>
+              <p class="bulk-benefit-desc">
+                Direct access to senior metallurgical specialists who review your Bill of Materials (BOM) to recommend optimal grades and coatings.
+              </p>
+            </div>
+          </div>
+
+          <!-- Benefit 4 -->
+          <div class="bulk-benefit-card">
+            <div class="bulk-benefit-img-wrap">
+              <img src="assets/images/bulk-jobsite-delivery.jpg" alt="Staged Jobsite Delivery - Crane Synchronized Logistics" class="bulk-benefit-img" loading="lazy">
+              <span class="bulk-benefit-badge">Jobsite Drops</span>
+            </div>
+            <div class="bulk-benefit-content">
+              <h3 class="bulk-benefit-title">Staged Jobsite Delivery</h3>
+              <p class="bulk-benefit-desc">
+                Synchronize shipments with your crane erection schedules. We deliver color-coded and labeled crates direct to specific building levels.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==========================================================================
+         SECTION 3: HOW BULK ORDERING WORKS
+         ========================================================================== -->
+    <section class="section section-subtle" id="how-it-works">
+      <div class="container">
+        <div class="section-header text-center">
+          <span class="badge badge-orange">Simplified Process</span>
+          <h2 class="section-title">How the Bulk RFQ System Works</h2>
+          <p class="section-subtitle">From initial part specification to site drop-off in four seamless steps.</p>
+        </div>
+
+        <div class="bulk-steps-grid">
+          <!-- Step 1 -->
+          <div class="bulk-step-card">
+            <span class="bulk-step-num">01</span>
+            <h3 class="bulk-step-title">Submit BOM Requirements</h3>
+            <p class="bulk-step-desc">
+              Fill out our digital RFQ form or upload your project Excel/PDF Bill of Materials with required standards, diameters, and quantities.
+            </p>
+          </div>
+
+          <!-- Step 2 -->
+          <div class="bulk-step-card">
+            <span class="bulk-step-num">02</span>
+            <h3 class="bulk-step-title">30-Min Custom Quote</h3>
+            <p class="bulk-step-desc">
+              Your dedicated account manager returns a formal itemized quotation with locked tier discounts, freight options, and dispatch schedules.
+            </p>
+          </div>
+
+          <!-- Step 3 -->
+          <div class="bulk-step-card">
+            <span class="bulk-step-num">03</span>
+            <h3 class="bulk-step-title">Sample &amp; MTR Approval</h3>
+            <p class="bulk-step-desc">
+              Review digital EN 10204 3.1 Material Test Reports, hardness certificates, and request pre-production pilot test samples if required.
+            </p>
+          </div>
+
+          <!-- Step 4 -->
+          <div class="bulk-step-card">
+            <span class="bulk-step-num">04</span>
+            <h3 class="bulk-step-title">Scheduled Fleet Dispatch</h3>
+            <p class="bulk-step-desc">
+              Palletized shipments are loaded onto dedicated trucks or flatbeds and tracked live until safely received on your dock or construction site.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==========================================================================
+         SECTION 4: ORDER REQUIREMENTS & MOQ TIERS
+         ========================================================================== -->
+    <section class="section" id="order-tiers">
+      <div class="container">
+        <div class="section-header text-center">
+          <span class="badge">Procurement Tiers</span>
+          <h2 class="section-title">Wholesale Volume &amp; Minimum Order Brackets</h2>
+          <p class="section-subtitle">Select the tier that matches your project scale to maximize your procurement budget.</p>
+        </div>
+
+        <div class="moq-cards-grid">
+          <!-- Tier 1 -->
+          <div class="moq-card">
+            <span class="moq-card-badge">Standard Bulk Tier</span>
+            <h3 class="moq-tier-name">Keg &amp; Box Wholesale</h3>
+            <div class="moq-tier-discount">15% – 25% OFF</div>
+            <p class="moq-tier-desc">Ideal for commercial subcontractors, specialty machine shops, and regional maintenance facilities.</p>
+            <ul class="moq-specs-list">
+              <li>
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                <span>MOQ: 1,000 – 10,000 Pieces</span>
+              </li>
+              <li>
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                <span>Standard Keg Packaging</span>
+              </li>
+              <li>
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                <span>Same-Day / 24-Hr Dispatch</span>
+              </li>
+              <li>
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                <span>Digital MTR Available Online</span>
+              </li>
+            </ul>
+          </div>
+
+          <!-- Tier 2 (Featured) -->
+          <div class="moq-card featured">
+            <span class="moq-card-badge">Most Popular</span>
+            <h3 class="moq-tier-name">Pallet Volume Tier</h3>
+            <div class="moq-tier-discount">30% – 38% OFF</div>
+            <p class="moq-tier-desc">Engineered for general contractors, bridge builders, high-rise structural framing, and equipment OEM plants.</p>
+            <ul class="moq-specs-list">
+              <li>
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                <span>MOQ: 1 to 5 Shrink-Wrapped Pallets</span>
+              </li>
+              <li>
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                <span>Color-Coded Custom Jobsite Crating</span>
+              </li>
+              <li>
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                <span>Priority Freight &amp; Liftgate Delivery</span>
+              </li>
+              <li>
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                <span>Net-30 / Net-60 Credit Eligibility</span>
+              </li>
+            </ul>
+          </div>
+
+          <!-- Tier 3 -->
+          <div class="moq-card">
+            <span class="moq-card-badge">Enterprise Direct</span>
+            <h3 class="moq-tier-name">Full Container Load (FCL)</h3>
+            <div class="moq-tier-discount">Up to 45% OFF</div>
+            <p class="moq-tier-desc">Mill-direct container shipping for mega infrastructure projects, energy grids, and global supply chains.</p>
+            <ul class="moq-specs-list">
+              <li>
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                <span>MOQ: 20ft / 40ft Full Container</span>
+              </li>
+              <li>
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                <span>Custom Head Markings &amp; Threadings</span>
+              </li>
+              <li>
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                <span>Full Vendor Managed Inventory (VMI)</span>
+              </li>
+              <li>
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                <span>Dedicated Logistics Coordinator</span>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==========================================================================
+         SECTION 5: BULK REQUEST FORM (Comprehensive RFQ System)
+         ========================================================================== -->
+    <section class="section section-subtle" id="rfq-form-section">
+      <div class="container">
+        <div class="bulk-form-card">
+          <div class="bulk-form-header">
+            <span class="badge badge-orange" style="margin-bottom: 12px;">Fast RFQ Portal</span>
+            <h2 class="bulk-form-title">Request a Bulk Quotation</h2>
+            <p class="bulk-form-desc">
+              Please provide your procurement specifications below. An enterprise fastener specialist will review your request and return a guaranteed quotation within 30 minutes.
+            </p>
+          </div>
+
+          <form id="bulkRfqForm" onsubmit="event.preventDefault(); alert('Thank you! Your bulk RFQ inquiry has been received. Reference #RFQ-' + Math.floor(100000 + Math.random() * 900000) + ' has been assigned. An account specialist will contact you within 30 minutes.');">
+            <div class="form-grid-2">
+              
+              <!-- Company Name -->
+              <div class="form-field">
+                <label class="form-label" for="companyName">
+                  <span>Company / Organization</span>
+                  <span class="required-star">*</span>
+                </label>
+                <input type="text" id="companyName" class="form-input" placeholder="e.g. Apex Structural Contractors LLC" required>
+              </div>
+
+              <!-- Contact Person -->
+              <div class="form-field">
+                <label class="form-label" for="contactName">
+                  <span>Contact Person Name</span>
+                  <span class="required-star">*</span>
+                </label>
+                <input type="text" id="contactName" class="form-input" placeholder="e.g. David Miller, Procurement Head" required>
+              </div>
+
+              <!-- Email -->
+              <div class="form-field">
+                <label class="form-label" for="contactEmail">
+                  <span>Corporate Work Email</span>
+                  <span class="required-star">*</span>
+                </label>
+                <input type="email" id="contactEmail" class="form-input" placeholder="dmiller@apexcontractors.com" required>
+              </div>
+
+              <!-- Phone -->
+              <div class="form-field">
+                <label class="form-label" for="contactPhone">
+                  <span>Phone Number</span>
+                  <span class="required-star">*</span>
+                </label>
+                <input type="tel" id="contactPhone" class="form-input" placeholder="e.g. +1 (555) 234-5678" required>
+              </div>
+
+              <!-- Product Category -->
+              <div class="form-field">
+                <label class="form-label" for="productCategory">
+                  <span>Product Category</span>
+                  <span class="required-star">*</span>
+                </label>
+                <select id="productCategory" class="form-select" required>
+                  <option value="" disabled selected>Select Primary Category...</option>
+                  <option value="bolts">Hex Head &amp; Structural Bolts (A325 / 8.8 / 10.9)</option>
+                  <option value="nuts">Heavy Hex Nuts &amp; Lock Nuts (2H / Grade 8)</option>
+                  <option value="washers">Structural Flat &amp; Split Washers (F436)</option>
+                  <option value="screws">Self-Drilling &amp; Cap Screws (DIN 912)</option>
+                  <option value="anchors">Concrete Expansion &amp; Wedge Anchors</option>
+                  <option value="rivets">Solid &amp; Blind Structural Rivets</option>
+                  <option value="rods">Threaded Rods &amp; Studs (ASTM A193 B7)</option>
+                  <option value="stainless">316 / 304 Marine Stainless Fasteners</option>
+                  <option value="mixed">Mixed Bill of Materials (Multiple Categories)</option>
+                </select>
+              </div>
+
+              <!-- Specific SKU / Part Description -->
+              <div class="form-field">
+                <label class="form-label" for="productSku">
+                  <span>Specific Part / SKU / Standard</span>
+                  <span class="required-star">*</span>
+                </label>
+                <input type="text" id="productSku" class="form-input" placeholder="e.g. A325 Heavy Hex Bolt M24 x 120mm HDG" required>
+              </div>
+
+              <!-- Quantity & Packaging Tier -->
+              <div class="form-field">
+                <label class="form-label" for="orderQuantity">
+                  <span>Estimated Quantity</span>
+                  <span class="required-star">*</span>
+                </label>
+                <input type="text" id="orderQuantity" class="form-input" placeholder="e.g. 25,000 pcs (or 4 Pallets)" required>
+              </div>
+
+              <!-- Required Delivery Date -->
+              <div class="form-field">
+                <label class="form-label" for="deliveryDate">
+                  <span>Required On-Site Date</span>
+                  <span class="required-star">*</span>
+                </label>
+                <input type="date" id="deliveryDate" class="form-input" required>
+              </div>
+
+              <!-- Delivery Location -->
+              <div class="form-field full-span">
+                <label class="form-label" for="deliveryLocation">
+                  <span>Delivery Address &amp; Facility Type</span>
+                  <span class="required-star">*</span>
+                </label>
+                <input type="text" id="deliveryLocation" class="form-input" placeholder="e.g. 742 Industrial Parkway, Houston, TX 77001 (Loading Dock with Crane Access)" required>
+              </div>
+
+              <!-- Drag & Drop BOM / File Upload Area -->
+              <div class="form-field full-span">
+                <label class="form-label">
+                  <span>Upload Bill of Materials (BOM) or Drawing (Optional)</span>
+                  <span style="font-size:0.75rem; color:var(--text-muted);">PDF, XLSX, CSV, DWG up to 25MB</span>
+                </label>
+                <div class="file-upload-zone" onclick="document.getElementById('bomFileInput').click();">
+                  <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="17 8 12 3 7 8"></polyline><line x1="12" y1="3" x2="12" y2="15"></line></svg>
+                  <span class="file-upload-text">Click or Drag &amp; Drop BOM spreadsheet / drawing</span>
+                  <span class="file-upload-hint">Attach your purchase order or engineered blueprint file</span>
+                  <input type="file" id="bomFileInput" style="display:none;" onchange="if(this.files.length) alert('File selected: ' + this.files[0].name);">
+                </div>
+              </div>
+
+              <!-- Additional Technical Requirements -->
+              <div class="form-field full-span">
+                <label class="form-label" for="additionalNotes">
+                  <span>Additional Specifications / Packaging Requirements</span>
+                </label>
+                <textarea id="additionalNotes" class="form-textarea" placeholder="Specify requirements such as: EN 10204 3.1 MTR certificates required, 1000-hour salt spray coating, private labeling, color-coded crates, or staggered delivery dates..."></textarea>
+              </div>
+
+              <!-- Submit Button -->
+              <div class="form-field full-span" style="margin-top: 10px;">
+                <button type="submit" class="btn btn-primary btn-lg" style="width: 100%; min-height: 50px; height: auto; font-size: 1rem; white-space: normal; line-height: 1.35; padding: 12px 16px;">
+                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="9 18 15 12 9 6"></polyline></svg>
+                  Submit Bulk RFQ for 30-Minute Guaranteed Quote
+                </button>
+                <p style="text-align: center; font-size: 0.78rem; color: var(--text-muted); margin-top: 10px;">
+                  🔒 ISO 9001:2015 Protected. Your project specifications and pricing remain strictly confidential.
+                </p>
+              </div>
+
+            </div>
+          </form>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==========================================================================
+         SECTION 6: BUSINESS SUPPORT & COMMERCIAL CREDIT
+         ========================================================================== -->
+    <section class="section" id="business-support">
+      <div class="container">
+        <div class="section-header text-center">
+          <span class="badge">Enterprise Services</span>
+          <h2 class="section-title">Dedicated Business Client Support</h2>
+          <p class="section-subtitle">We partner with your procurement and engineering teams to ensure complete supply continuity.</p>
+        </div>
+
+        <div class="support-cards-grid">
+          <!-- Support 1 -->
+          <div class="support-card">
+            <div class="icon-tint-box">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="5" width="20" height="14" rx="2"></rect><line x1="2" y1="10" x2="22" y2="10"></line></svg>
+            </div>
+            <h3 class="support-card-title">Commercial Credit Lines</h3>
+            <p class="support-card-desc">
+              Approved corporate clients receive Net-30, Net-60, and project milestone billing terms to keep capital flowing freely throughout construction cycles.
+            </p>
+          </div>
+
+          <!-- Support 2 -->
+          <div class="support-card">
+            <div class="icon-tint-box icon-tint-orange">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="16" y1="13" x2="8" y2="13"></line><line x1="16" y1="17" x2="8" y2="17"></line><polyline points="10 9 9 9 8 9"></polyline></svg>
+            </div>
+            <h3 class="support-card-title">Pre-Shipment MTR Test Pack</h3>
+            <p class="support-card-desc">
+              Full metallurgical certifications, dimensional check reports, and coating thickness audits are compiled into a digital compliance package prior to dispatch.
+            </p>
+          </div>
+
+          <!-- Support 3 -->
+          <div class="support-card">
+            <div class="icon-tint-box">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><path d="M12 2a14.5 14.5 0 0 0 0 20 14.5 14.5 0 0 0 0-20"></path><path d="M2 12h20"></path></svg>
+            </div>
+            <h3 class="support-card-title">Global Supply Contingency</h3>
+            <p class="support-card-desc">
+              Dual-source manufacturing partnerships ensure backup supply lines are always active, insulating your jobsites from regional port disruptions or raw steel shortages.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==========================================================================
+         SECTION 7: FINAL CTA BANNER
+         ========================================================================== -->
+    <section class="section section-subtle" id="final-bulk-cta" style="padding-top: 0;">
+      <div class="container">
+        <div class="cta-banner">
+          <div class="cta-banner-grid">
+            <div class="cta-banner-text">
+              <span class="badge" style="background: rgba(228, 123, 50, 0.25); color: #FFA566; border-color: rgba(228, 123, 50, 0.4); margin-bottom: 12px;">Direct Procurement Hotline</span>
+              <h2 class="cta-banner-title">Need Immediate Fastener Assistance?</h2>
+              <p class="cta-banner-desc">
+                Speak directly with an enterprise fastener application engineer. We are ready to assist with emergency rush shipments, large bids, and custom blueprints.
+              </p>
+            </div>
+            <div class="cta-banner-actions">
+              <a href="tel:18005558482" class="btn btn-primary btn-lg">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path></svg>
+                Call 1-800-555-TITAN
+              </a>
+              <a href="dashboard.html" class="btn btn-outline btn-lg" style="border-color: #FFFFFF; color: #FFFFFF;">
+                Access Dashboard
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <a href="index.html" class="brand-logo" aria-label="TITAN Fasteners Home">
+            <img src="assets/images/logo-white.svg" alt="TITAN Fasteners &amp; Supply" class="brand-logo-img footer-logo-img" />
+          </a>
+          <p>
+            Master distributor of industrial fasteners, structural hardware, metric &amp; imperial bolts, anchors, and specialized engineered fasteners for commercial and industrial contractors.
+          </p>
+        </div>
+
+        <div>
+          <h4 class="footer-heading">Fastener Categories</h4>
+          <ul class="footer-links">
+            <li><a href="catalog.html?cat=hex-bolts" class="footer-link">Hex Head Bolts &amp; Studs</a></li>
+            <li><a href="catalog.html?cat=nuts" class="footer-link">Heavy Hex &amp; Lock Nuts</a></li>
+            <li><a href="catalog.html?cat=washers" class="footer-link">Flat, Split &amp; USS Washers</a></li>
+            <li><a href="catalog.html?cat=screws" class="footer-link">Self-Tapping &amp; Machine Screws</a></li>
+            <li><a href="catalog.html?cat=anchors" class="footer-link">Concrete &amp; Masonry Anchors</a></li>
+            <li><a href="catalog.html?cat=stainless" class="footer-link">316 Stainless Marine Fasteners</a></li>
+          </ul>
+        </div>
+
+        <div>
+          <h4 class="footer-heading">Quick Links</h4>
+          <ul class="footer-links">
+            <li><a href="index.html" class="footer-link">Home 1 (Classic B2B)</a></li>
+            <li><a href="home-2.html" class="footer-link">Home 2 (Modern Grid)</a></li>
+            <li><a href="catalog.html" class="footer-link">Product Catalog</a></li>
+            <li><a href="bulk-ordering.html" class="footer-link">Bulk RFQ System</a></li>
+            <li><a href="about.html" class="footer-link">Company Profile</a></li>
+            <li><a href="contact.html" class="footer-link">Contact &amp; Warehouses</a></li>
+          </ul>
+        </div>
+
+        <div>
+          <h4 class="footer-heading">Client Portal</h4>
+          <ul class="footer-links">
+            <li><a href="login.html" class="footer-link">B2B Account Login</a></li>
+            <li><a href="dashboard.html" class="footer-link">Business Client Dashboard</a></li>
+            <li><a href="dashboard.html#orders" class="footer-link">Order Status &amp; Tracking</a></li>
+            <li><a href="dashboard.html#mtr" class="footer-link">MTR Test Certificates</a></li>
+            <li><a href="bulk-ordering.html" class="footer-link">Commercial Credit Application</a></li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <div>&copy; 2026 TITAN Fasteners &amp; Hardware Supply Distribution Corp. All rights reserved.</div>
+        <div>ISO 9001:2015 Registered Supply Chain | Quality &amp; Precision Guaranteed</div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- BACK TO TOP BUTTON -->
+  <button class="back-to-top" aria-label="Scroll to top" title="Scroll to top">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="19" x2="12" y2="5"></line><polyline points="5 12 12 5 19 12"></polyline></svg>
+  </button>
+
+  <script src="assets/js/main.js"></script>
+</body>
+</html>

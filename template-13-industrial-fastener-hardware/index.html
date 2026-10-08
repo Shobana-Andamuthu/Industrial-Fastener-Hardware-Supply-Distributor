@@ -1,0 +1,814 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr" data-theme="light">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>TITAN FASTENERS | Industrial Fastener & Hardware Supply Distributor</title>
+  <meta name="description" content="Wholesale industrial fasteners, hex bolts, heavy hex nuts, anchors, and stainless steel hardware for manufacturers, contractors, and business clients.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Space+Grotesk:wght@600;700;800&display=swap" rel="stylesheet">
+  <link rel="icon" type="image/svg+xml" href="assets/images/favicon.svg">
+  <link rel="apple-touch-icon" href="assets/images/favicon.svg">
+  <link rel="stylesheet" href="assets/css/style.css">
+</head>
+<body>
+
+  <!-- PAGE PRELOADER -->
+  <div class="page-preloader" id="pagePreloader">
+    <div class="preloader-inner">
+      <div class="preloader-brand">
+        <div class="preloader-spinner-wrap">
+          <div class="preloader-ring"></div>
+          <div class="preloader-bolt-icon">
+            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"></path></svg>
+          </div>
+        </div>
+        <div class="preloader-logo-text">
+          <span class="p-title">TITAN</span>
+          <span class="p-sub">INDUSTRIAL SUPPLY</span>
+        </div>
+      </div>
+      <div class="preloader-bar">
+        <div class="preloader-progress"></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- NAVBAR -->
+  <header class="navbar-wrapper">
+    <div class="container navbar">
+      <!-- Brand Logo -->
+      <a href="index.html" class="brand-logo" aria-label="TITAN Fasteners Home">
+        <img src="assets/images/logo.svg" alt="TITAN Fasteners &amp; Supply" class="brand-logo-img logo-light" />
+        <img src="assets/images/logo-white.svg" alt="TITAN Fasteners &amp; Supply" class="brand-logo-img logo-dark" />
+      </a>
+
+      <!-- Desktop Navigation Menu -->
+      <nav aria-label="Main Navigation">
+        <ul class="nav-menu">
+          <li class="nav-dropdown">
+            <a href="index.html" class="nav-link active" aria-haspopup="true">
+              Home
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg>
+            </a>
+            <div class="nav-dropdown-menu">
+              <a href="index.html" class="nav-dropdown-item active">Home 1 (Classic B2B)</a>
+              <a href="home-2.html" class="nav-dropdown-item">Home 2 (Modern Grid)</a>
+            </div>
+          </li>
+          <li><a href="catalog.html" class="nav-link">Product Catalog</a></li>
+          <li><a href="bulk-ordering.html" class="nav-link">Bulk Ordering</a></li>
+          <li><a href="about.html" class="nav-link">About Us</a></li>
+          <li><a href="contact.html" class="nav-link">Contact</a></li>
+          <li><a href="dashboard.html" class="nav-link">Dashboard</a></li>
+        </ul>
+      </nav>
+
+      <!-- Right Nav Controls -->
+      <div class="nav-actions">
+        <!-- Theme Toggle -->
+        <button class="icon-btn theme-toggle-btn" aria-label="Toggle theme">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path></svg>
+        </button>
+
+        <!-- RTL Toggle -->
+        <button class="icon-btn rtl-toggle-btn" aria-label="Toggle text direction">RTL</button>
+
+        <!-- Login -->
+        <a href="login.html" class="btn btn-outline btn-sm">Login</a>
+
+        <!-- Request Quote CTA -->
+        <a href="bulk-ordering.html" class="btn btn-primary btn-sm">Request Quote</a>
+
+        <!-- Mobile Hamburger -->
+        <button class="hamburger-btn" aria-label="Open navigation menu">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="18" x2="21" y2="18"></line></svg>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- MOBILE DRAWER -->
+  <div class="mobile-drawer-backdrop" aria-hidden="true">
+    <div class="mobile-drawer">
+      <div class="mobile-drawer-header">
+        <a href="index.html" class="brand-logo" aria-label="TITAN Fasteners Home">
+          <img src="assets/images/logo.svg" alt="TITAN Fasteners &amp; Supply" class="brand-logo-img logo-light" />
+          <img src="assets/images/logo-white.svg" alt="TITAN Fasteners &amp; Supply" class="brand-logo-img logo-dark" />
+        </a>
+        <button class="drawer-close-btn" aria-label="Close navigation menu">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
+        </button>
+      </div>
+      <div class="mobile-drawer-body">
+        <ul class="mobile-nav-list">
+          <li>
+            <button class="mobile-dropdown-header active" data-target="mobile-home-sub">
+              <span>Home</span>
+              <svg class="dropdown-chevron" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"></polyline></svg>
+            </button>
+            <div id="mobile-home-sub" class="mobile-dropdown-content" style="display:none;">
+              <a href="index.html" class="mobile-nav-link active">Home 1 (Classic B2B)</a>
+              <a href="home-2.html" class="mobile-nav-link">Home 2 (Modern Grid)</a>
+            </div>
+          </li>
+          <li><a href="catalog.html" class="mobile-nav-link">Product Catalog</a></li>
+          <li><a href="bulk-ordering.html" class="mobile-nav-link">Bulk Ordering</a></li>
+          <li><a href="about.html" class="mobile-nav-link">About Us</a></li>
+          <li><a href="contact.html" class="mobile-nav-link">Contact</a></li>
+          <li><a href="dashboard.html" class="mobile-nav-link">Dashboard</a></li>
+        </ul>
+      </div>
+      <div class="mobile-drawer-footer">
+        <div style="display: flex; gap: 10px; justify-content: space-between;">
+          <button class="btn btn-outline btn-sm theme-toggle-btn" style="flex:1;">Theme</button>
+          <button class="btn btn-outline btn-sm rtl-toggle-btn" style="flex:1;">RTL</button>
+        </div>
+        <a href="login.html" class="btn btn-outline" style="width: 100%;">Client Login</a>
+        <a href="bulk-ordering.html" class="btn btn-primary" style="width: 100%;">Request Bulk Quote</a>
+      </div>
+    </div>
+  </div>
+
+  <main>
+    <!-- =========================================
+         SECTION 1 — HERO
+         ========================================= -->
+    <section class="section hero-section" id="hero">
+      <div class="container">
+        <div class="hero-grid">
+          <div class="hero-content">
+            <div class="hero-tag">
+              <span class="hero-tag-dot"></span>
+              Industrial &amp; Construction Hardware Supply
+            </div>
+            <h1 class="hero-heading">
+              Reliable Fasteners. <br>
+              <span class="highlight">Built for Every Job.</span>
+            </h1>
+            <p class="hero-description">
+              Supplying high-tensile fasteners, structural hardware, and engineered anchoring systems for contractors, manufacturers, fabricators, and business clients across all industrial sectors.
+            </p>
+            <div class="hero-actions">
+              <a href="catalog.html" class="btn btn-primary btn-lg">Browse Catalog</a>
+              <a href="bulk-ordering.html" class="btn btn-outline btn-lg">Request Bulk Pricing</a>
+            </div>
+            <div class="hero-stats-row">
+              <div class="hero-stat-item">
+                <span class="hero-stat-value">50,000+</span>
+                <span class="hero-stat-label">SKUs in Stock</span>
+              </div>
+              <div class="hero-stat-item">
+                <span class="hero-stat-value">99.4%</span>
+                <span class="hero-stat-label">On-Time Dispatch</span>
+              </div>
+              <div class="hero-stat-item">
+                <span class="hero-stat-value">ISO 9001</span>
+                <span class="hero-stat-label">Quality Assured</span>
+              </div>
+            </div>
+          </div>
+          <div class="hero-visual">
+            <div class="hero-image-card">
+              <img class="hero-image" src="assets/images/hero-fasteners.jpg" alt="Titan Industrial Fasteners and Precision Hardware Hardware Stock" loading="eager">
+              <div class="hero-badge-overlay">
+                <div class="hero-badge-icon">
+                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path></svg>
+                </div>
+                <div>
+                  <div class="hero-badge-title">ASTM &amp; DIN Certified</div>
+                  <div class="hero-badge-sub">Full MTR Test Certifications Available</div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- =========================================
+         SECTION 2 — PRODUCT CATEGORIES (LaundriX Style Cards)
+         ========================================= -->
+    <section class="section section-subtle" id="categories">
+      <div class="container">
+        <div class="section-header text-center">
+          <span class="badge">Master Inventory</span>
+          <h2 class="section-title">Explore Our Fastener Range</h2>
+          <p class="section-subtitle">Comprehensive industrial hardware engineered to stringent structural, mechanical, and marine standards.</p>
+        </div>
+        <div class="grid-3">
+          <!-- Category 1 -->
+          <article class="category-card">
+            <div class="category-image-wrap">
+              <span class="card-pill-tag">Structural Grade</span>
+              <img class="category-image" src="assets/images/cat-hex-bolts.jpg" alt="Industrial Hex Bolts Range" loading="lazy">
+            </div>
+            <div class="category-body">
+              <h3 class="category-title">Hex Bolts</h3>
+              <p class="category-desc">High-tensile Grade 8.8, 10.9, and Grade 5 structural bolts for heavy mechanical applications.</p>
+              <a href="catalog.html?cat=hex-bolts" class="category-footer">
+                <span>View Specifications</span>
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"></polyline></svg>
+              </a>
+            </div>
+          </article>
+
+          <!-- Category 2 -->
+          <article class="category-card">
+            <div class="category-image-wrap">
+              <span class="card-pill-tag">Heavy Hex</span>
+              <img class="category-image" src="assets/images/cat-nuts.jpg" alt="Industrial Nuts Range" loading="lazy">
+            </div>
+            <div class="category-body">
+              <h3 class="category-title">Nuts</h3>
+              <p class="category-desc">Heavy hex, nylon lock, flange, and slotted nuts engineered to prevent vibrational loosening.</p>
+              <a href="catalog.html?cat=nuts" class="category-footer">
+                <span>View Specifications</span>
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"></polyline></svg>
+              </a>
+            </div>
+          </article>
+
+          <!-- Category 3 -->
+          <article class="category-card">
+            <div class="category-image-wrap">
+              <span class="card-pill-tag">USS &amp; DIN Standard</span>
+              <img class="category-image" src="assets/images/cat-washers.jpg" alt="Industrial Washers Range" loading="lazy">
+            </div>
+            <div class="category-body">
+              <h3 class="category-title">Washers</h3>
+              <p class="category-desc">Standard flat, split lock, Belleville, and USS hardened washers for load distribution.</p>
+              <a href="catalog.html?cat=washers" class="category-footer">
+                <span>View Specifications</span>
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"></polyline></svg>
+              </a>
+            </div>
+          </article>
+
+          <!-- Category 4 -->
+          <article class="category-card">
+            <div class="category-image-wrap">
+              <span class="card-pill-tag">High Torque</span>
+              <img class="category-image" src="assets/images/cat-screws.jpg" alt="Industrial Screws Range" loading="lazy">
+            </div>
+            <div class="category-body">
+              <h3 class="category-title">Screws</h3>
+              <p class="category-desc">Self-tapping, socket cap, machine, and drywall screws designed for high torque insertion.</p>
+              <a href="catalog.html?cat=screws" class="category-footer">
+                <span>View Specifications</span>
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"></polyline></svg>
+              </a>
+            </div>
+          </article>
+
+          <!-- Category 5 -->
+          <article class="category-card">
+            <div class="category-image-wrap">
+              <span class="card-pill-tag">Masonry &amp; Steel</span>
+              <img class="category-image" src="assets/images/cat-anchors.jpg" alt="Industrial Anchors Range" loading="lazy">
+            </div>
+            <div class="category-body">
+              <h3 class="category-title">Anchors</h3>
+              <p class="category-desc">Heavy-duty wedge, drop-in, chemical, and sleeve anchors for concrete and masonry fastening.</p>
+              <a href="catalog.html?cat=anchors" class="category-footer">
+                <span>View Specifications</span>
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"></polyline></svg>
+              </a>
+            </div>
+          </article>
+
+          <!-- Category 6 -->
+          <article class="category-card">
+            <div class="category-image-wrap">
+              <span class="card-pill-tag">Marine Grade 316</span>
+              <img class="category-image" src="assets/images/cat-stainless.jpg" alt="Stainless Steel Fasteners Range" loading="lazy">
+            </div>
+            <div class="category-body">
+              <h3 class="category-title">Stainless Steel Fasteners</h3>
+              <p class="category-desc">304 &amp; 316 marine-grade corrosion-resistant hardware for chemical and coastal environments.</p>
+              <a href="catalog.html?cat=stainless" class="category-footer">
+                <span>View Specifications</span>
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"></polyline></svg>
+              </a>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- =========================================
+         SECTION 3 — FEATURED PRODUCTS (LaundriX Style Product Cards)
+         ========================================= -->
+    <section class="section" id="featured">
+      <div class="container">
+        <div class="section-header text-center">
+          <span class="badge badge-orange">B2B Core Catalog</span>
+          <h2 class="section-title">Built for Reliable Performance</h2>
+          <p class="section-subtitle">Precision engineered fastener hardware stocked in bulk for immediate contract dispatch.</p>
+        </div>
+        <div class="grid-3">
+          <!-- Product 1 -->
+          <article class="product-card">
+            <div class="product-image-wrap">
+              <span class="card-pill-tag">Grade 8.8 / 10.9</span>
+              <img class="product-image" src="assets/images/prod-hex-bolts.jpg" alt="Hex Head Structural Bolts" loading="lazy">
+            </div>
+            <div class="product-body">
+              <h3 class="product-title">Hex Head Bolts</h3>
+              <div class="product-specs">
+                <div class="spec-row">
+                  <span class="spec-label">Material</span>
+                  <span class="spec-val">Medium Carbon Steel</span>
+                </div>
+                <div class="spec-row">
+                  <span class="spec-label">Size Range</span>
+                  <span class="spec-val">M6 to M48 (1/4" to 2")</span>
+                </div>
+                <div class="spec-row">
+                  <span class="spec-label">Standard</span>
+                  <span class="spec-val">DIN 931 / ISO 4014</span>
+                </div>
+              </div>
+              <div class="product-card-footer">
+                <a href="bulk-ordering.html?sku=HEX-88" class="btn btn-primary btn-sm">Request Quote</a>
+                <a href="catalog.html" class="btn btn-outline btn-sm">View Spec</a>
+              </div>
+            </div>
+          </article>
+
+          <!-- Product 2 -->
+          <article class="product-card">
+            <div class="product-image-wrap">
+              <span class="card-pill-tag">ASTM A194 2H</span>
+              <img class="product-image" src="assets/images/prod-heavy-nuts.jpg" alt="Heavy Hex Nuts" loading="lazy">
+            </div>
+            <div class="product-body">
+              <h3 class="product-title">Heavy Hex Nuts</h3>
+              <div class="product-specs">
+                <div class="spec-row">
+                  <span class="spec-label">Material</span>
+                  <span class="spec-val">Heat-Treated Alloy Steel</span>
+                </div>
+                <div class="spec-row">
+                  <span class="spec-label">Size Range</span>
+                  <span class="spec-val">M12 to M64 (1/2" to 2-1/2")</span>
+                </div>
+                <div class="spec-row">
+                  <span class="spec-label">Standard</span>
+                  <span class="spec-val">ASTM A563 / DIN 934</span>
+                </div>
+              </div>
+              <div class="product-card-footer">
+                <a href="bulk-ordering.html?sku=HHN-2H" class="btn btn-primary btn-sm">Request Quote</a>
+                <a href="catalog.html" class="btn btn-outline btn-sm">View Spec</a>
+              </div>
+            </div>
+          </article>
+
+          <!-- Product 3 -->
+          <article class="product-card">
+            <div class="product-image-wrap">
+              <span class="card-pill-tag">USS / SAE Spec</span>
+              <img class="product-image" src="assets/images/prod-flat-washers.jpg" alt="Flat Washers" loading="lazy">
+            </div>
+            <div class="product-body">
+              <h3 class="product-title">Flat Washers</h3>
+              <div class="product-specs">
+                <div class="spec-row">
+                  <span class="spec-label">Material</span>
+                  <span class="spec-val">Hardened Zinc / Black Oxide</span>
+                </div>
+                <div class="spec-row">
+                  <span class="spec-label">Size Range</span>
+                  <span class="spec-val">M3 to M52 (#4 to 2")</span>
+                </div>
+                <div class="spec-row">
+                  <span class="spec-label">Standard</span>
+                  <span class="spec-val">DIN 125A / ISO 7089</span>
+                </div>
+              </div>
+              <div class="product-card-footer">
+                <a href="bulk-ordering.html?sku=FW-USS" class="btn btn-primary btn-sm">Request Quote</a>
+                <a href="catalog.html" class="btn btn-outline btn-sm">View Spec</a>
+              </div>
+            </div>
+          </article>
+
+          <!-- Product 4 -->
+          <article class="product-card">
+            <div class="product-image-wrap">
+              <span class="card-pill-tag">Case Hardened</span>
+              <img class="product-image" src="assets/images/prod-tapping-screws.jpg" alt="Self-Tapping Screws" loading="lazy">
+            </div>
+            <div class="product-body">
+              <h3 class="product-title">Self-Tapping Screws</h3>
+              <div class="product-specs">
+                <div class="spec-row">
+                  <span class="spec-label">Material</span>
+                  <span class="spec-val">Carbon Steel / 410 Stainless</span>
+                </div>
+                <div class="spec-row">
+                  <span class="spec-label">Size Range</span>
+                  <span class="spec-val">#6 to #14 (Length up to 4")</span>
+                </div>
+                <div class="spec-row">
+                  <span class="spec-label">Standard</span>
+                  <span class="spec-val">DIN 7981 / ISO 1481</span>
+                </div>
+              </div>
+              <div class="product-card-footer">
+                <a href="bulk-ordering.html?sku=STS-410" class="btn btn-primary btn-sm">Request Quote</a>
+                <a href="catalog.html" class="btn btn-outline btn-sm">View Spec</a>
+              </div>
+            </div>
+          </article>
+
+          <!-- Product 5 -->
+          <article class="product-card">
+            <div class="product-image-wrap">
+              <span class="card-pill-tag">ETA Approved</span>
+              <img class="product-image" src="assets/images/prod-wedge-anchors.jpg" alt="Heavy Expansion Anchors" loading="lazy">
+            </div>
+            <div class="product-body">
+              <h3 class="product-title">Expansion Anchors</h3>
+              <div class="product-specs">
+                <div class="spec-row">
+                  <span class="spec-label">Material</span>
+                  <span class="spec-val">Zinc Plated Carbon Steel</span>
+                </div>
+                <div class="spec-row">
+                  <span class="spec-label">Size Range</span>
+                  <span class="spec-val">M8 to M24 (3/8" to 1-1/4")</span>
+                </div>
+                <div class="spec-row">
+                  <span class="spec-label">Standard</span>
+                  <span class="spec-val">ICC-ES ESR / ETA-05</span>
+                </div>
+              </div>
+              <div class="product-card-footer">
+                <a href="bulk-ordering.html?sku=ANC-EXP" class="btn btn-primary btn-sm">Request Quote</a>
+                <a href="catalog.html" class="btn btn-outline btn-sm">View Spec</a>
+              </div>
+            </div>
+          </article>
+
+          <!-- Product 6 -->
+          <article class="product-card">
+            <div class="product-image-wrap">
+              <span class="card-pill-tag">AISI 316 Marine</span>
+              <img class="product-image" src="assets/images/prod-ss-bolts.jpg" alt="Stainless Steel Bolts" loading="lazy">
+            </div>
+            <div class="product-body">
+              <h3 class="product-title">Stainless Steel Bolts</h3>
+              <div class="product-specs">
+                <div class="spec-row">
+                  <span class="spec-label">Material</span>
+                  <span class="spec-val">Austenitic 316 Marine SS</span>
+                </div>
+                <div class="spec-row">
+                  <span class="spec-label">Size Range</span>
+                  <span class="spec-val">M4 to M36 (1/4" to 1-1/2")</span>
+                </div>
+                <div class="spec-row">
+                  <span class="spec-label">Standard</span>
+                  <span class="spec-val">DIN 933 / ISO 3506</span>
+                </div>
+              </div>
+              <div class="product-card-footer">
+                <a href="bulk-ordering.html?sku=SS-316" class="btn btn-primary btn-sm">Request Quote</a>
+                <a href="catalog.html" class="btn btn-outline btn-sm">View Spec</a>
+              </div>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- =========================================
+         SECTION 4 — WHY BUSINESSES CHOOSE US (LaundriX Style Features)
+         ========================================= -->
+    <section class="section section-subtle" id="why-choose-us">
+      <div class="container">
+        <div class="section-header text-center">
+          <span class="badge">Commercial Advantage</span>
+          <h2 class="section-title">Why Businesses Choose Titan</h2>
+          <p class="section-subtitle">Engineered reliability, transparent supply chains, and high-volume fulfillment built for contractors and manufacturers.</p>
+        </div>
+        <div class="grid-4">
+          <!-- Card 1 -->
+          <div class="why-card">
+            <div class="why-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path><polyline points="9 12 11 14 15 10"></polyline></svg>
+            </div>
+            <h3 class="why-title">Consistent Quality</h3>
+            <p class="why-desc">Full traceability with Mill Test Reports (MTRs) and strict ISO 9001:2015 dimensional testing on every batch.</p>
+          </div>
+
+          <!-- Card 2 -->
+          <div class="why-card">
+            <div class="why-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><rect x="1" y="3" width="22" height="18" rx="2"></rect><line x1="3" y1="9" x2="21" y2="9"></line><line x1="9" y1="21" x2="9" y2="9"></line></svg>
+            </div>
+            <h3 class="why-title">Bulk Availability</h3>
+            <p class="why-desc">Over 50,000 active SKUs housed in regional fulfillment hubs for continuous production lines and projects.</p>
+          </div>
+
+          <!-- Card 3 -->
+          <div class="why-card">
+            <div class="why-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><rect x="1" y="3" width="15" height="13"></rect><polygon points="16 8 20 8 23 11 23 16 16 16 8"></polygon><circle cx="5.5" cy="18.5" r="2.5"></circle><circle cx="18.5" cy="18.5" r="2.5"></circle></svg>
+            </div>
+            <h3 class="why-title">Fast Order Processing</h3>
+            <p class="why-desc">Automated picking and same-day freight dispatch ensure zero downtime on job sites and assembly lines.</p>
+          </div>
+
+          <!-- Card 4 -->
+          <div class="why-card">
+            <div class="why-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="16" y1="13" x2="8" y2="13"></line><line x1="16" y1="17" x2="8" y2="17"></line><polyline points="10 9 9 9 8 9"></polyline></svg>
+            </div>
+            <h3 class="why-title">Technical Support</h3>
+            <p class="why-desc">In-house metallurgists and fastener engineers ready to advise on shear load, torque, and galvanic compatibility.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- =========================================
+         SECTION 5 — INDUSTRIES WE SERVE
+         ========================================= -->
+    <section class="section" id="industries">
+      <div class="container">
+        <div class="section-header text-center">
+          <span class="badge">Sector Specialization</span>
+          <h2 class="section-title">Industries We Serve</h2>
+          <p class="section-subtitle">Supplying mission-critical fastening components across core manufacturing, structural, and civil sectors.</p>
+        </div>
+        <div class="grid-3">
+          <!-- Industry 1 (Image 1) -->
+          <div class="industry-card">
+            <img class="industry-bg-image" src="assets/images/ind-construction.jpg" alt="Construction &amp; Structural Foundation Fasteners" loading="lazy">
+            <div class="industry-gradient-overlay"></div>
+            <div class="industry-content">
+              <span class="industry-badge">Heavy Civil &amp; Building</span>
+              <h3 class="industry-name">Construction &amp; Civil</h3>
+              <p class="industry-desc">High-tensile structural bolting, foundation anchor sleeves, and seismic tie assemblies.</p>
+            </div>
+          </div>
+
+          <!-- Industry 2 (Image 2) -->
+          <div class="industry-card">
+            <img class="industry-bg-image" src="assets/images/ind-manufacturing.jpg" alt="Automated Manufacturing Fasteners" loading="lazy">
+            <div class="industry-gradient-overlay"></div>
+            <div class="industry-content">
+              <span class="industry-badge">OEM &amp; Assembly Lines</span>
+              <h3 class="industry-name">Manufacturing</h3>
+              <p class="industry-desc">Precision machine screws, retaining rings, and automated bowl feeder fasteners for assembly plants.</p>
+            </div>
+          </div>
+
+          <!-- Industry 3 (Image 3) -->
+          <div class="industry-card">
+            <img class="industry-bg-image" src="assets/images/ind-automotive.png" alt="Automotive &amp; Security Fasteners" loading="lazy">
+            <div class="industry-gradient-overlay"></div>
+            <div class="industry-content">
+              <span class="industry-badge">Transport &amp; Fleets</span>
+              <h3 class="industry-name">Automotive &amp; Fleet</h3>
+              <p class="industry-desc">Torque-critical chassis bolts, wheel studs, tamper-proof shear nuts, and vibration-proof locking collars.</p>
+            </div>
+          </div>
+
+          <!-- Industry 4 (Image 4) -->
+          <div class="industry-card">
+            <img class="industry-bg-image" src="assets/images/ind-fabrication.png" alt="Metal Fabrication &amp; Rivets" loading="lazy">
+            <div class="industry-gradient-overlay"></div>
+            <div class="industry-content">
+              <span class="industry-badge">Custom Metalwork</span>
+              <h3 class="industry-name">Fabrication &amp; Enclosures</h3>
+              <p class="industry-desc">High-shear structural blind rivets, weld studs, clinch fasteners, and sheet metal joins.</p>
+            </div>
+          </div>
+
+          <!-- Industry 5 (Image 5) -->
+          <div class="industry-card">
+            <img class="industry-bg-image" src="assets/images/ind-machinery.png" alt="Industrial Machinery Precision Hardware" loading="lazy">
+            <div class="industry-gradient-overlay"></div>
+            <div class="industry-content">
+              <span class="industry-badge">Precision Engineering</span>
+              <h3 class="industry-name">Industrial Machinery</h3>
+              <p class="industry-desc">CNC precision threaded bushings, guide sleeves, dowel studs, and high-stress tooling hardware.</p>
+            </div>
+          </div>
+
+          <!-- Industry 6 (MRO & Overhauls) -->
+          <div class="industry-card">
+            <img class="industry-bg-image" src="assets/images/ind-mro.jpg" alt="MRO Hardware Assortment Kits &amp; Replacement Fasteners" loading="lazy">
+            <div class="industry-gradient-overlay"></div>
+            <div class="industry-content">
+              <span class="industry-badge">MRO &amp; Overhauls</span>
+              <h3 class="industry-name">Maintenance &amp; Repair</h3>
+              <p class="industry-desc">Modular hardware bins, assortment kits, and emergency replacement fasteners.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- =========================================
+         SECTION 6 — HOW BULK ORDERING WORKS (LaundriX Process Cards)
+         ========================================= -->
+    <section class="section section-subtle" id="process">
+      <div class="container">
+        <div class="section-header text-center">
+          <span class="badge badge-orange">Streamlined Procurement</span>
+          <h2 class="section-title">How Bulk Ordering Works</h2>
+          <p class="section-subtitle">A straightforward 4-step workflow tailored for B2B procurement teams, contractors, and project estimators.</p>
+        </div>
+        <div class="process-grid">
+          <!-- Step 1 -->
+          <div class="process-card">
+            <div class="process-card-header">
+              <span class="process-step-pill">01</span>
+              <svg class="process-arrow-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+            </div>
+            <h3 class="process-title">Browse Products</h3>
+            <p class="process-desc">Search through our 50,000+ SKU catalog or upload your custom Bill of Materials (BOM) file directly.</p>
+          </div>
+
+          <!-- Step 2 -->
+          <div class="process-card">
+            <div class="process-card-header">
+              <span class="process-step-pill">02</span>
+              <svg class="process-arrow-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+            </div>
+            <h3 class="process-title">Send Bulk Requirement</h3>
+            <p class="process-desc">Specify desired material grades, diameters, lengths, coatings, and required shipment timelines.</p>
+          </div>
+
+          <!-- Step 3 -->
+          <div class="process-card">
+            <div class="process-card-header">
+              <span class="process-step-pill">03</span>
+              <svg class="process-arrow-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+            </div>
+            <h3 class="process-title">Receive Quote</h3>
+            <p class="process-desc">Our dedicated industrial sales team returns tiered volume pricing and freight schedules in under 2 hours.</p>
+          </div>
+
+          <!-- Step 4 -->
+          <div class="process-card">
+            <div class="process-card-header">
+              <span class="process-step-pill">04</span>
+              <svg class="process-arrow-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
+            </div>
+            <h3 class="process-title">Track Your Order</h3>
+            <p class="process-desc">Monitor warehouse dispatch, freight tracking numbers, and access digital MTR test certs in your Client Portal.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- =========================================
+         SECTION 7 — BUSINESS TRUST & TESTIMONIAL
+         ========================================= -->
+    <section class="section" id="trust">
+      <div class="container">
+        <div class="trust-wrapper">
+          <div class="trust-stats-grid">
+            <div class="trust-stat-box">
+              <span class="trust-stat-num">28+</span>
+              <span class="trust-stat-title">Years of Supply Experience</span>
+              <span class="trust-stat-sub">Established 1998</span>
+            </div>
+            <div class="trust-stat-box">
+              <span class="trust-stat-num">50k+</span>
+              <span class="trust-stat-title">Product Range &amp; SKUs</span>
+              <span class="trust-stat-sub">Structural, Marine &amp; Precision</span>
+            </div>
+            <div class="trust-stat-box">
+              <span class="trust-stat-num">4,800+</span>
+              <span class="trust-stat-title">Active Business Clients</span>
+              <span class="trust-stat-sub">Contractors &amp; Manufacturers</span>
+            </div>
+            <div class="trust-stat-box">
+              <span class="trust-stat-num">99.4%</span>
+              <span class="trust-stat-title">Fast Order Processing</span>
+              <span class="trust-stat-sub">Same-Day Warehouse Fulfillment</span>
+            </div>
+          </div>
+
+          <!-- Trust Testimonial -->
+          <div class="trust-testimonial-card">
+            <img class="testimonial-avatar" src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=200&q=80" alt="Robert Vance - Procurement Director" loading="lazy">
+            <div>
+              <p class="testimonial-quote">
+                "Titan Fasteners has served as our primary hardware distributor for over 6 years across three manufacturing plants. Their mill test certifications, pricing transparency, and rapid delivery accuracy give our engineers total confidence."
+              </p>
+              <div class="testimonial-author">Robert Vance</div>
+              <div class="testimonial-role">Vice President of Supply Chain, SteelCore Heavy Industries</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- =========================================
+         SECTION 8 — FINAL CTA
+         ========================================= -->
+    <section class="section" id="cta">
+      <div class="container">
+        <div class="cta-banner">
+          <div class="cta-banner-grid">
+            <div class="cta-banner-content">
+              <h2>Need Fasteners in Bulk?</h2>
+              <p>
+                Connect directly with our industrial sales desk. Submit your technical drawings, BOM spreadsheets, or product list to receive a competitive wholesale quotation with guaranteed lead times.
+              </p>
+              <div class="cta-banner-actions">
+                <a href="bulk-ordering.html" class="btn btn-primary btn-lg">Request Bulk Quote</a>
+                <a href="catalog.html" class="btn btn-outline-white btn-lg">Browse Catalog</a>
+              </div>
+            </div>
+            <div class="cta-banner-card">
+              <h3>Direct Procurement Desk</h3>
+              <p>Speak directly with an application engineer for custom fastener manufacturing or high-volume orders.</p>
+              <div class="cta-contact-item">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path></svg>
+                <span>Direct Line: +1 (800) 555-8482</span>
+              </div>
+              <div class="cta-contact-item">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="4" width="20" height="16" rx="2"></rect><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"></path></svg>
+                <span>Fast Quote: rfq@titanfasteners.com</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <a href="index.html" class="brand-logo" aria-label="TITAN Fasteners Home">
+            <img src="assets/images/logo-white.svg" alt="TITAN Fasteners &amp; Supply" class="brand-logo-img footer-logo-img" />
+          </a>
+          <p>
+            Master distributor of industrial fasteners, structural hardware, metric &amp; imperial bolts, anchors, and specialized engineered fasteners for commercial and industrial contractors.
+          </p>
+        </div>
+
+        <div>
+          <h4 class="footer-heading">Fastener Categories</h4>
+          <ul class="footer-links">
+            <li><a href="catalog.html?cat=hex-bolts" class="footer-link">Hex Head Bolts &amp; Studs</a></li>
+            <li><a href="catalog.html?cat=nuts" class="footer-link">Heavy Hex &amp; Lock Nuts</a></li>
+            <li><a href="catalog.html?cat=washers" class="footer-link">Flat, Split &amp; USS Washers</a></li>
+            <li><a href="catalog.html?cat=screws" class="footer-link">Self-Tapping &amp; Machine Screws</a></li>
+            <li><a href="catalog.html?cat=anchors" class="footer-link">Concrete &amp; Masonry Anchors</a></li>
+            <li><a href="catalog.html?cat=stainless" class="footer-link">316 Stainless Marine Fasteners</a></li>
+          </ul>
+        </div>
+
+        <div>
+          <h4 class="footer-heading">Quick Links</h4>
+          <ul class="footer-links">
+            <li><a href="index.html" class="footer-link">Home 1 (Classic B2B)</a></li>
+            <li><a href="home-2.html" class="footer-link">Home 2 (Modern Grid)</a></li>
+            <li><a href="catalog.html" class="footer-link">Product Catalog</a></li>
+            <li><a href="bulk-ordering.html" class="footer-link">Bulk RFQ System</a></li>
+            <li><a href="about.html" class="footer-link">Company Profile</a></li>
+            <li><a href="contact.html" class="footer-link">Contact &amp; Warehouses</a></li>
+          </ul>
+        </div>
+
+        <div>
+          <h4 class="footer-heading">Client Portal</h4>
+          <ul class="footer-links">
+            <li><a href="login.html" class="footer-link">B2B Account Login</a></li>
+            <li><a href="dashboard.html" class="footer-link">Business Client Dashboard</a></li>
+            <li><a href="dashboard.html#orders" class="footer-link">Order Status &amp; Tracking</a></li>
+            <li><a href="dashboard.html#mtr" class="footer-link">MTR Test Certificates</a></li>
+            <li><a href="bulk-ordering.html" class="footer-link">Commercial Credit Application</a></li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <div>&copy; 2026 TITAN Fasteners &amp; Hardware Supply Distribution Corp. All rights reserved.</div>
+        <div>ISO 9001:2015 Registered Supply Chain | Quality &amp; Precision Guaranteed</div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- BACK TO TOP BUTTON -->
+  <button class="back-to-top" aria-label="Scroll to top" title="Scroll to top">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="19" x2="12" y2="5"></line><polyline points="5 12 12 5 19 12"></polyline></svg>
+  </button>
+
+  <script src="assets/js/main.js"></script>
+</body>
+</html>

@@ -1,0 +1,341 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr" data-theme="light">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Business Client Access &amp; Procurement Portal | TITAN FASTENERS</title>
+  <meta name="description" content="Secure B2B authentication portal for authorized industrial contractors, OEM manufacturers, and commercial procurement teams.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Space+Grotesk:wght@600;700;800&display=swap" rel="stylesheet">
+  <link rel="icon" type="image/svg+xml" href="assets/images/favicon.svg">
+  <link rel="apple-touch-icon" href="assets/images/favicon.svg">
+  <link rel="stylesheet" href="assets/css/style.css">
+</head>
+<body style="background-color: var(--bg-surface); min-height: 100vh;">
+
+  <!-- PAGE PRELOADER -->
+  <div class="page-preloader" id="pagePreloader">
+    <div class="preloader-inner">
+      <div class="preloader-brand">
+        <div class="preloader-spinner-wrap">
+          <div class="preloader-ring"></div>
+          <div class="preloader-bolt-icon">
+            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"></path></svg>
+          </div>
+        </div>
+        <div class="preloader-logo-text">
+          <span class="p-title">TITAN</span>
+          <span class="p-sub">INDUSTRIAL SUPPLY</span>
+        </div>
+      </div>
+      <div class="preloader-bar">
+        <div class="preloader-progress"></div>
+      </div>
+    </div>
+  </div>
+
+  <main class="auth-split-wrapper">
+    
+    <!-- ==========================================================================
+         LEFT COLUMN: INDUSTRIAL BRAND & VALUE PROPOSITION SHOWCASE
+         ========================================================================== -->
+    <div class="auth-visual-side">
+      <div class="auth-visual-overlay"></div>
+      
+      <!-- Top Bar on Visual Side -->
+      <div class="auth-visual-top">
+        <a href="index.html" class="brand-logo" aria-label="TITAN Fasteners Home">
+          <img src="assets/images/logo-white.svg" alt="TITAN Fasteners &amp; Supply" style="height: 32px; width: auto;" />
+        </a>
+      </div>
+
+      <!-- Center Feature Content -->
+      <div class="auth-visual-content">
+        <div class="auth-visual-badge">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path></svg>
+          <span>Enterprise Procurement Hub</span>
+        </div>
+        <h1 class="auth-visual-title">Direct Procurement Access for Global Industrial Supply</h1>
+        <p class="auth-visual-desc">
+          Log in to access your contracted tier pricing, download EN 10204 3.1 Material Test Reports (MTRs), manage active jobsite purchase orders, and monitor real-time freight dispatches.
+        </p>
+
+        <!-- Stats Highlight Grid -->
+        <div class="auth-visual-stats">
+          <div class="auth-stat-item">
+            <span class="stat-num">50,000+</span>
+            <span class="stat-lbl">In-Stock Fastener SKUs</span>
+          </div>
+          <div class="auth-stat-item">
+            <span class="stat-num">30-Min</span>
+            <span class="stat-lbl">Guaranteed RFQ SLA</span>
+          </div>
+          <div class="auth-stat-item">
+            <span class="stat-num">ISO 9001</span>
+            <span class="stat-lbl">Traceable Supply Chain</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Bottom Compliance Info -->
+      <div class="auth-visual-bottom">
+        <span>🔒 256-Bit TLS Encryption</span>
+        <span>&bull;</span>
+        <span>SOC2 Compliant</span>
+        <span>&bull;</span>
+        <span>Dedicated Account Engineers</span>
+      </div>
+    </div>
+
+    <!-- ==========================================================================
+         RIGHT COLUMN: INTERACTIVE AUTHENTICATION & REGISTRATION PORTAL
+         ========================================================================== -->
+    <div class="auth-form-side">
+      
+      <!-- Top Corner Controls (Theme & RTL) -->
+      <div class="auth-top-controls">
+        <button class="icon-btn theme-toggle-btn" aria-label="Toggle theme" title="Toggle theme">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path></svg>
+        </button>
+        <button class="icon-btn rtl-toggle-btn" aria-label="Toggle text direction" title="Toggle RTL">RTL</button>
+      </div>
+
+      <div class="auth-form-container">
+        
+        <!-- Header Brand Icon & Titles -->
+        <div class="auth-header">
+          <div class="auth-icon-badge">
+            <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path></svg>
+          </div>
+          <h2 class="auth-title" id="authHeading">Welcome Back</h2>
+          <p class="auth-subtitle" id="authSubheading">Enter your commercial credentials to access your organization's dashboard.</p>
+        </div>
+
+        <!-- Tab Switcher (Sign In vs Create Account) -->
+        <div class="auth-tabs" role="tablist">
+          <button type="button" class="auth-tab-btn active" id="tabSignIn" role="tab" aria-selected="true" onclick="switchAuthTab('signin')">Sign In</button>
+          <button type="button" class="auth-tab-btn" id="tabRegister" role="tab" aria-selected="false" onclick="switchAuthTab('register')">Create Account</button>
+        </div>
+
+        <!-- ==========================================
+             FORM 1: SIGN IN (Default Active)
+             ========================================== -->
+        <form id="signInForm" class="auth-tab-content" onsubmit="event.preventDefault(); window.location.href='dashboard.html';">
+          
+          <!-- Email Field -->
+          <div class="auth-field">
+            <label class="auth-label" for="loginEmail">
+              <span>Business Email Address</span>
+            </label>
+            <div class="auth-input-wrap">
+              <input type="email" id="loginEmail" class="auth-input" placeholder="name@contractor.com" required value="procurement@keystonecorp.com">
+            </div>
+          </div>
+
+          <!-- Password Field -->
+          <div class="auth-field">
+            <div class="auth-label">
+              <label for="loginPassword">Password</label>
+              <a href="#forgot" class="auth-forgot-link" onclick="alert('Password reset link sent to your corporate email.'); return false;">Forgot Password?</a>
+            </div>
+            <div class="auth-input-wrap">
+              <input type="password" id="loginPassword" class="auth-input" placeholder="••••••••••••" required value="TitanFastener2026!">
+              <button type="button" class="auth-pwd-toggle" onclick="togglePasswordVisibility('loginPassword', this)" aria-label="Toggle password visibility">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path><circle cx="12" cy="12" r="3"></circle></svg>
+              </button>
+            </div>
+          </div>
+
+          <!-- Options Row (Remember Me) -->
+          <div class="auth-row-options">
+            <label class="auth-checkbox">
+              <input type="checkbox" id="rememberMe" checked>
+              <span>Remember me for 30 days</span>
+            </label>
+          </div>
+
+          <!-- Submit Button -->
+          <button type="submit" class="btn-auth-submit">
+            <span>Sign In to Account</span>
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+          </button>
+
+          <!-- Demo Quick Fill Pill -->
+          <div class="auth-demo-hint">
+            <button type="button" class="btn-demo-quick" id="btnFillDemo">
+              ⚡ Auto-Fill Demo Credentials (Keystone Corp)
+            </button>
+          </div>
+
+          <!-- Divider -->
+          <div class="auth-divider">
+            <span>Or Continue With</span>
+          </div>
+
+          <!-- SSO Corporate Buttons -->
+          <div class="auth-sso-grid">
+            <button type="button" class="btn-sso" onclick="window.location.href='dashboard.html';">
+              <svg width="18" height="18" viewBox="0 0 24 24"><path fill="#EA4335" d="M12 5c1.6 0 3 .6 4.1 1.7l3.1-3.1C17.3 1.8 14.8 1 12 1 7.5 1 3.7 3.6 1.9 7.3l3.7 2.9C6.5 7.4 9 5 12 5z"/><path fill="#4285F4" d="M23.5 12.3c0-.8-.1-1.6-.2-2.3H12v4.6h6.5c-.3 1.5-1.1 2.8-2.4 3.7l3.7 2.9c2.2-2 3.7-5 3.7-8.9z"/><path fill="#FBBC05" d="M5.6 14.8c-.2-.7-.4-1.5-.4-2.3s.2-1.6.4-2.3L1.9 7.3C.7 9.7 0 12.3 0 15.1s.7 5.4 1.9 7.8l3.7-2.9z"/><path fill="#34A853" d="M12 23.5c3.2 0 6-1.1 8-3l-3.7-2.9c-1.1.7-2.5 1.2-4.3 1.2-3 0-5.5-2.4-6.4-5.2L1.9 16.5C3.7 20.2 7.5 23.5 12 23.5z"/></svg>
+              <span>Google</span>
+            </button>
+            <button type="button" class="btn-sso" onclick="window.location.href='dashboard.html';">
+              <svg width="18" height="18" viewBox="0 0 24 24"><path fill="#F25022" d="M1 1h10v10H1z"/><path fill="#7FBA00" d="M13 1h10v10H13z"/><path fill="#00A4EF" d="M1 13h10v10H1z"/><path fill="#FFB900" d="M13 13h10v10H13z"/></svg>
+              <span>Microsoft SSO</span>
+            </button>
+          </div>
+
+          <!-- Switch to Registration -->
+          <div class="auth-switch-footer">
+            <span>Don't have an enterprise account?</span>
+            <a onclick="switchAuthTab('register')">Request Access</a>
+          </div>
+        </form>
+
+        <!-- ==========================================
+             FORM 2: CREATE / REQUEST ACCOUNT (Tabs Toggle)
+             ========================================== -->
+        <form id="registerForm" class="auth-tab-content" style="display: none;" onsubmit="event.preventDefault(); alert('Commercial registration submitted! Our account engineering team will verify your tax credentials within 30 minutes.'); switchAuthTab('signin');">
+          
+          <!-- Name Grid (2 Cols) -->
+          <div class="auth-grid-2">
+            <div class="auth-field">
+              <label class="auth-label" for="regFirstName">First Name</label>
+              <input type="text" id="regFirstName" class="auth-input" placeholder="e.g. Johnathan" required>
+            </div>
+            <div class="auth-field">
+              <label class="auth-label" for="regLastName">Last Name</label>
+              <input type="text" id="regLastName" class="auth-input" placeholder="e.g. Davis" required>
+            </div>
+          </div>
+
+          <!-- Email & Phone (2 Cols) -->
+          <div class="auth-grid-2">
+            <div class="auth-field">
+              <label class="auth-label" for="regEmail">Corporate Email</label>
+              <input type="email" id="regEmail" class="auth-input" placeholder="john@company.com" required>
+            </div>
+            <div class="auth-field">
+              <label class="auth-label" for="regPhone">Phone Number</label>
+              <input type="tel" id="regPhone" class="auth-input" placeholder="(555) 000-0000" required>
+            </div>
+          </div>
+
+          <!-- Account Type / Contractor Tier -->
+          <div class="auth-field">
+            <label class="auth-label" for="regTier">Account Type / Industry Tier</label>
+            <div class="auth-input-wrap">
+              <select id="regTier" class="auth-input auth-select" required>
+                <option value="tier1">Tier-1 General Contractor (High Volume Net-30)</option>
+                <option value="oem">OEM / Heavy Machinery Manufacturer</option>
+                <option value="civil">Civil &amp; Infrastructure Builder</option>
+                <option value="wholesale">Standard Wholesale Commercial Buyer</option>
+              </select>
+            </div>
+          </div>
+
+          <!-- Passwords (2 Cols) -->
+          <div class="auth-grid-2">
+            <div class="auth-field">
+              <label class="auth-label" for="regPassword">Create Password</label>
+              <div class="auth-input-wrap">
+                <input type="password" id="regPassword" class="auth-input" placeholder="••••••••" required>
+                <button type="button" class="auth-pwd-toggle" onclick="togglePasswordVisibility('regPassword', this)" aria-label="Toggle password visibility">
+                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path><circle cx="12" cy="12" r="3"></circle></svg>
+                </button>
+              </div>
+            </div>
+            <div class="auth-field">
+              <label class="auth-label" for="regConfirmPassword">Confirm Password</label>
+              <div class="auth-input-wrap">
+                <input type="password" id="regConfirmPassword" class="auth-input" placeholder="••••••••" required>
+                <button type="button" class="auth-pwd-toggle" onclick="togglePasswordVisibility('regConfirmPassword', this)" aria-label="Toggle password visibility">
+                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path><circle cx="12" cy="12" r="3"></circle></svg>
+                </button>
+              </div>
+            </div>
+          </div>
+
+          <!-- Agreement Checkbox -->
+          <div class="auth-row-options" style="margin-bottom: 18px;">
+            <label class="auth-checkbox">
+              <input type="checkbox" id="regTerms" required>
+              <span style="font-size: 0.8rem; line-height: 1.4;">I agree to the Commercial Terms of Supply and Privacy Policy, and verify business tax authority.</span>
+            </label>
+          </div>
+
+          <!-- Submit Button -->
+          <button type="submit" class="btn-auth-submit">
+            <span>Submit Account Application</span>
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+          </button>
+
+          <!-- Switch to Sign In -->
+          <div class="auth-switch-footer">
+            <span>Already have an authorized account?</span>
+            <a onclick="switchAuthTab('signin')">Sign In</a>
+          </div>
+        </form>
+
+      </div>
+    </div>
+  </main>
+
+  <!-- SCRIPTS -->
+  <script src="assets/js/main.js"></script>
+  <script>
+    // Tab switcher between Sign In & Register
+    function switchAuthTab(tab) {
+      const tabSignIn = document.getElementById('tabSignIn');
+      const tabRegister = document.getElementById('tabRegister');
+      const signInForm = document.getElementById('signInForm');
+      const registerForm = document.getElementById('registerForm');
+      const authHeading = document.getElementById('authHeading');
+      const authSubheading = document.getElementById('authSubheading');
+
+      if (tab === 'signin') {
+        tabSignIn.classList.add('active');
+        tabSignIn.setAttribute('aria-selected', 'true');
+        tabRegister.classList.remove('active');
+        tabRegister.setAttribute('aria-selected', 'false');
+
+        signInForm.style.display = 'block';
+        registerForm.style.display = 'none';
+
+        authHeading.textContent = 'Welcome Back';
+        authSubheading.textContent = 'Enter your commercial credentials to access your organization\'s dashboard.';
+      } else {
+        tabRegister.classList.add('active');
+        tabRegister.setAttribute('aria-selected', 'true');
+        tabSignIn.classList.remove('active');
+        tabSignIn.setAttribute('aria-selected', 'false');
+
+        signInForm.style.display = 'none';
+        registerForm.style.display = 'block';
+
+        authHeading.textContent = 'Create Your Account';
+        authSubheading.textContent = 'Join hundreds of certified contractors and manufacturers with direct wholesale credit.';
+      }
+    }
+
+    // Toggle password show/hide
+    function togglePasswordVisibility(inputId, btn) {
+      const input = document.getElementById(inputId);
+      if (!input) return;
+      if (input.type === 'password') {
+        input.type = 'text';
+        btn.innerHTML = `<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17.94 17.94A10.07 10.07 0 0 1 12 20c-7 0-11-8-11-8a18.45 18.45 0 0 1 5.06-5.94M9.9 4.24A9.12 9.12 0 0 1 12 4c7 0 11 8 11 8a18.5 18.5 0 0 1-2.16 3.19m-6.72-1.07a3 3 0 1 1-4.24-4.24"></path><line x1="1" y1="1" x2="23" y2="23"></line></svg>`;
+      } else {
+        input.type = 'password';
+        btn.innerHTML = `<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path><circle cx="12" cy="12" r="3"></circle></svg>`;
+      }
+    }
+
+    // Demo credentials autofill
+    document.getElementById('btnFillDemo')?.addEventListener('click', () => {
+      document.getElementById('loginEmail').value = 'procurement@keystonecorp.com';
+      document.getElementById('loginPassword').value = 'TitanFastener2026!';
+    });
+  </script>
+</body>
+</html>

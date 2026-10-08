@@ -1,0 +1,35 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 120" width="100%" height="100%">
+  <defs>
+    <linearGradient id="favOrangeGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#FF9900" />
+      <stop offset="100%" stop-color="#E47B32" />
+    </linearGradient>
+    <linearGradient id="favDarkGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#24384B" />
+      <stop offset="100%" stop-color="#14212D" />
+    </linearGradient>
+    <linearGradient id="favBoltGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#4A5C6D" />
+      <stop offset="100%" stop-color="#1E2A36" />
+    </linearGradient>
+  </defs>
+
+  <!-- ICON EMBLEM -->
+  <g transform="translate(10, 5)">
+    <!-- Dark Roof / Outer Structure 'T' -->
+    <path d="M 52 5 L 85 24 L 75 39 L 52 25 L 34 36 L 34 68 L 22 75 L 22 30 Z" fill="url(#favDarkGrad)" />
+    <!-- Left Dark Base Pillar -->
+    <path d="M 22 75 L 34 68 L 34 100 L 22 93 Z" fill="url(#favDarkGrad)" opacity="0.95" />
+    
+    <!-- Orange Hex Structure 'E' Frame -->
+    <path d="M 52 5 L 98 32 L 98 88 L 68 105 L 56 98 L 86 81 L 86 39 L 52 19 Z" fill="url(#favOrangeGrad)" />
+    <path d="M 48 48 L 78 48 L 78 60 L 48 60 Z" fill="url(#favOrangeGrad)" />
+    <path d="M 48 93 L 68 105 L 52 115 L 34 105 L 34 93 L 48 93 Z" fill="url(#favOrangeGrad)" />
+
+    <!-- Center Bolt Graphic -->
+    <rect x="44" y="66" width="22" height="6" rx="1.5" fill="url(#favBoltGrad)" />
+    <rect x="47" y="73" width="16" height="28" rx="1" fill="url(#favBoltGrad)" />
+    <!-- Thread ridges -->
+    <path d="M 47 79 L 63 76 M 47 85 L 63 82 M 47 91 L 63 88 M 47 97 L 63 94" stroke="#FFFFFF" stroke-width="2.2" stroke-linecap="round" />
+  </g>
+</svg>

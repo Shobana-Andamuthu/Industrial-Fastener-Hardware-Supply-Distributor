@@ -1,0 +1,68 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 450 135" width="100%" height="100%">
+  <defs>
+    <linearGradient id="titanOrangeGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#FF9900" />
+      <stop offset="100%" stop-color="#E47B32" />
+    </linearGradient>
+    <linearGradient id="titanDarkGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#24384B" />
+      <stop offset="100%" stop-color="#14212D" />
+    </linearGradient>
+    <linearGradient id="titanBoltGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#4A5C6D" />
+      <stop offset="100%" stop-color="#1E2A36" />
+    </linearGradient>
+  </defs>
+
+  <!-- ICON EMBLEM -->
+  <g id="emblem-group" transform="translate(10, 8)">
+    <!-- Dark Roof / Outer Structure 'T' -->
+    <path d="M 52 5 L 85 24 L 75 39 L 52 25 L 34 36 L 34 68 L 22 75 L 22 30 Z" fill="url(#titanDarkGrad)" />
+    <!-- Left Dark Base Pillar -->
+    <path d="M 22 75 L 34 68 L 34 100 L 22 93 Z" fill="url(#titanDarkGrad)" opacity="0.95" />
+    
+    <!-- Orange Hex Structure 'E' Frame -->
+    <!-- Top & Right Orange Bevel -->
+    <path d="M 52 5 L 98 32 L 98 88 L 68 105 L 56 98 L 86 81 L 86 39 L 52 19 Z" fill="url(#titanOrangeGrad)" />
+    <!-- Orange Middle Bar of E -->
+    <path d="M 48 48 L 78 48 L 78 60 L 48 60 Z" fill="url(#titanOrangeGrad)" />
+    <!-- Orange Bottom Angle -->
+    <path d="M 48 93 L 68 105 L 52 115 L 34 105 L 34 93 L 48 93 Z" fill="url(#titanOrangeGrad)" />
+
+    <!-- Center Bolt Graphic -->
+    <!-- Bolt Hex/Flat Cap -->
+    <rect x="44" y="66" width="22" height="6" rx="1.5" fill="url(#titanBoltGrad)" />
+    <!-- Bolt Threaded Shank -->
+    <rect x="47" y="73" width="16" height="28" rx="1" fill="url(#titanBoltGrad)" />
+    <!-- Thread ridges in white/light-gray -->
+    <path d="M 47 79 L 63 76 M 47 85 L 63 82 M 47 91 L 63 88 M 47 97 L 63 94" stroke="#FFFFFF" stroke-width="2" stroke-linecap="round" />
+  </g>
+
+  <!-- VERTICAL ORANGE SEPARATOR -->
+  <rect x="135" y="20" width="4" height="85" rx="2" fill="#E47B32" />
+
+  <!-- TITAN WORDMARK -->
+  <g id="wordmark" transform="translate(155, 18)">
+    <!-- TITAN TEXT IN BOLD GEOMETRIC NAVY -->
+    <!-- T -->
+    <path d="M 0 6 L 38 6 L 38 18 L 25 18 L 25 58 L 13 58 L 13 18 L 0 18 Z" class="titan-brand-text" fill="currentColor" />
+    
+    <!-- I -->
+    <path d="M 46 6 L 58 6 L 58 58 L 46 58 Z" class="titan-brand-text" fill="currentColor" />
+    
+    <!-- T -->
+    <path d="M 66 6 L 104 6 L 104 18 L 91 18 L 91 58 L 79 58 L 79 18 L 66 18 Z" class="titan-brand-text" fill="currentColor" />
+    
+    <!-- A (with orange solid triangle center) -->
+    <path d="M 125 6 L 143 58 L 130 58 L 125 43 L 111 43 L 106 58 L 94 58 L 112 6 Z M 118 22 L 113 36 L 123 36 Z" class="titan-brand-text" fill="currentColor" />
+    <!-- Orange Triangle within A -->
+    <polygon points="118,22 113,36 123,36" fill="#E47B32" />
+    <polygon points="118,36 109,58 127,58" fill="#E47B32" />
+
+    <!-- N -->
+    <path d="M 148 6 L 160 6 L 180 43 L 180 6 L 192 6 L 192 58 L 180 58 L 160 21 L 160 58 L 148 58 Z" class="titan-brand-text" fill="currentColor" />
+
+    <!-- FASTENERS & SUPPLY SUB-TEXT IN VIBRANT ORANGE -->
+    <text x="0" y="80" font-family="'Space Grotesk', 'Plus Jakarta Sans', sans-serif" font-size="19" font-weight="800" fill="#E47B32" letter-spacing="3.8">FASTENERS &amp; SUPPLY</text>
+  </g>
+</svg>
