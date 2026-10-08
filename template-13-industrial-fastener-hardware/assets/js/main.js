@@ -347,6 +347,249 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
+  // 13. High-Performance Responsive Custom Select Enhancer (100% Viewport Bound)
+  function initCustomSelects() {
+    const selects = document.querySelectorAll('select.form-select, select.sku-select, select.catalog-sort-select, select.auth-select, select');
+
+    selects.forEach(select => {
+      if (select.dataset.customSelectInit === 'true' || select.getAttribute('data-no-custom') === 'true') return;
+      select.dataset.customSelectInit = 'true';
+
+      // Hide native select visually while keeping it in the DOM for forms & accessibility
+      select.classList.add('custom-select-native-hidden');
+
+      // Create custom wrapper
+      const wrapper = document.createElement('div');
+      wrapper.className = 'custom-select-wrapper';
+      if (select.className) {
+        select.className.split(' ').forEach(cls => {
+          if (cls && cls !== 'custom-select-native-hidden') {
+            wrapper.classList.add(cls + '-custom');
+          }
+        });
+      }
+
+      if (select.disabled) wrapper.classList.add('disabled');
+
+      // Create trigger button
+      const trigger = document.createElement('button');
+      trigger.type = 'button';
+      trigger.className = 'custom-select-trigger';
+      trigger.setAttribute('aria-haspopup', 'listbox');
+      trigger.setAttribute('aria-expanded', 'false');
+      if (select.id) trigger.setAttribute('aria-controls', 'cmenu-' + select.id);
+
+      const labelSpan = document.createElement('span');
+      labelSpan.className = 'custom-select-label';
+
+      const chevron = document.createElementNS('http://www.w3.org/2000/svg', 'svg');
+      chevron.setAttribute('class', 'custom-select-arrow');
+      chevron.setAttribute('width', '16');
+      chevron.setAttribute('height', '16');
+      chevron.setAttribute('viewBox', '0 0 24 24');
+      chevron.setAttribute('fill', 'none');
+      chevron.setAttribute('stroke', 'currentColor');
+      chevron.setAttribute('stroke-width', '2.2');
+      chevron.setAttribute('stroke-linecap', 'round');
+      chevron.setAttribute('stroke-linejoin', 'round');
+      chevron.innerHTML = '<polyline points="6 9 12 15 18 9"></polyline>';
+
+      trigger.appendChild(labelSpan);
+      trigger.appendChild(chevron);
+
+      // Create dropdown menu
+      const menu = document.createElement('div');
+      menu.className = 'custom-select-menu';
+      menu.setAttribute('role', 'listbox');
+      if (select.id) menu.id = 'cmenu-' + select.id;
+
+      function renderOptions() {
+        menu.innerHTML = '';
+        const options = Array.from(select.options);
+        const selectedIndex = select.selectedIndex >= 0 ? select.selectedIndex : 0;
+        const currentOption = options[selectedIndex];
+
+        if (currentOption) {
+          labelSpan.textContent = currentOption.textContent;
+          if (currentOption.disabled || currentOption.value === '') {
+            trigger.classList.add('placeholder-active');
+          } else {
+            trigger.classList.remove('placeholder-active');
+          }
+        }
+
+        options.forEach((opt, idx) => {
+          const optDiv = document.createElement('div');
+          optDiv.className = 'custom-select-option';
+          optDiv.setAttribute('role', 'option');
+          optDiv.setAttribute('data-value', opt.value);
+          optDiv.setAttribute('data-index', idx);
+          optDiv.textContent = opt.textContent;
+
+          if (opt.disabled) {
+            optDiv.classList.add('disabled');
+          }
+          if (idx === selectedIndex) {
+            optDiv.classList.add('selected');
+            optDiv.setAttribute('aria-selected', 'true');
+          }
+
+          optDiv.addEventListener('click', (e) => {
+            e.stopPropagation();
+            if (opt.disabled) return;
+            select.selectedIndex = idx;
+            select.value = opt.value;
+
+            // Dispatch standard events so catalog filtering, calculators, and validation work
+            select.dispatchEvent(new Event('input', { bubbles: true }));
+            select.dispatchEvent(new Event('change', { bubbles: true }));
+
+            updateDisplay();
+            closeMenu();
+            trigger.focus();
+          });
+
+          menu.appendChild(optDiv);
+        });
+      }
+
+      function updateDisplay() {
+        const selectedIndex = select.selectedIndex >= 0 ? select.selectedIndex : 0;
+        const currentOption = select.options[selectedIndex];
+        if (currentOption) {
+          labelSpan.textContent = currentOption.textContent;
+          if (currentOption.disabled || currentOption.value === '') {
+            trigger.classList.add('placeholder-active');
+          } else {
+            trigger.classList.remove('placeholder-active');
+          }
+        }
+        menu.querySelectorAll('.custom-select-option').forEach((el, idx) => {
+          const isSel = idx === selectedIndex;
+          el.classList.toggle('selected', isSel);
+          el.setAttribute('aria-selected', isSel ? 'true' : 'false');
+        });
+      }
+
+      function checkDropPosition() {
+        const rect = trigger.getBoundingClientRect();
+        const spaceBelow = window.innerHeight - rect.bottom;
+        const spaceAbove = rect.top;
+        if (spaceBelow < 220 && spaceAbove > spaceBelow) {
+          wrapper.classList.add('dropup');
+        } else {
+          wrapper.classList.remove('dropup');
+        }
+      }
+
+      function openMenu() {
+        document.querySelectorAll('.custom-select-wrapper.open').forEach(w => {
+          if (w !== wrapper) {
+            w.classList.remove('open');
+            const trig = w.querySelector('.custom-select-trigger');
+            if (trig) trig.setAttribute('aria-expanded', 'false');
+          }
+        });
+        checkDropPosition();
+        wrapper.classList.add('open');
+        trigger.setAttribute('aria-expanded', 'true');
+
+        const selectedOpt = menu.querySelector('.custom-select-option.selected');
+        if (selectedOpt) {
+          selectedOpt.scrollIntoView({ block: 'nearest' });
+        }
+      }
+
+      function closeMenu() {
+        wrapper.classList.remove('open');
+        trigger.setAttribute('aria-expanded', 'false');
+      }
+
+      function toggleMenu() {
+        if (wrapper.classList.contains('open')) {
+          closeMenu();
+        } else {
+          openMenu();
+        }
+      }
+
+      trigger.addEventListener('click', (e) => {
+        e.preventDefault();
+        e.stopPropagation();
+        toggleMenu();
+      });
+
+      // Keyboard navigation
+      trigger.addEventListener('keydown', (e) => {
+        if (e.key === 'ArrowDown' || e.key === 'Down') {
+          e.preventDefault();
+          if (!wrapper.classList.contains('open')) {
+            openMenu();
+          } else {
+            const nextIndex = Math.min(select.options.length - 1, select.selectedIndex + 1);
+            if (!select.options[nextIndex].disabled) {
+              select.selectedIndex = nextIndex;
+              select.dispatchEvent(new Event('input', { bubbles: true }));
+              select.dispatchEvent(new Event('change', { bubbles: true }));
+              updateDisplay();
+            }
+          }
+        } else if (e.key === 'ArrowUp' || e.key === 'Up') {
+          e.preventDefault();
+          if (!wrapper.classList.contains('open')) {
+            openMenu();
+          } else {
+            const prevIndex = Math.max(0, select.selectedIndex - 1);
+            if (!select.options[prevIndex].disabled) {
+              select.selectedIndex = prevIndex;
+              select.dispatchEvent(new Event('input', { bubbles: true }));
+              select.dispatchEvent(new Event('change', { bubbles: true }));
+              updateDisplay();
+            }
+          }
+        } else if (e.key === 'Enter' || e.key === ' ') {
+          e.preventDefault();
+          toggleMenu();
+        } else if (e.key === 'Escape' || e.key === 'Tab') {
+          closeMenu();
+        }
+      });
+
+      // Synchronize when underlying select value changes externally
+      select.addEventListener('change', () => {
+        updateDisplay();
+      });
+
+      // Insert wrapper into DOM
+      select.parentNode.insertBefore(wrapper, select);
+      wrapper.appendChild(trigger);
+      wrapper.appendChild(menu);
+      wrapper.appendChild(select);
+
+      renderOptions();
+    });
+
+    // Close on document click outside
+    document.addEventListener('click', (e) => {
+      if (!e.target.closest('.custom-select-wrapper')) {
+        document.querySelectorAll('.custom-select-wrapper.open').forEach(w => {
+          w.classList.remove('open');
+          const trig = w.querySelector('.custom-select-trigger');
+          if (trig) trig.setAttribute('aria-expanded', 'false');
+        });
+      }
+    });
+
+    // Close on resize/scroll
+    window.addEventListener('resize', () => {
+      document.querySelectorAll('.custom-select-wrapper.open').forEach(w => {
+        w.classList.remove('open');
+        const trig = w.querySelector('.custom-select-trigger');
+        if (trig) trig.setAttribute('aria-expanded', 'false');
+      });
+    }, { passive: true });
+  }
+
   // 12. Page Preloader Dismissal
   const preloader = document.getElementById('pagePreloader');
   if (preloader) {
@@ -363,10 +606,13 @@ document.addEventListener('DOMContentLoaded', () => {
       window.addEventListener('load', () => {
         setTimeout(hidePreloader, 350);
       });
-      // Fallback timeout in case window load already triggered or takes too long
       setTimeout(hidePreloader, 1800);
     }
   }
+
+  // Initialize Custom Selects
+  initCustomSelects();
 });
+
 
 
