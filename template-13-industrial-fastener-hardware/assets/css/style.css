@@ -8479,6 +8479,287 @@ textarea {
 }
 
 
+/* ==========================================================================
+   CUSTOM RESPONSIVE DATE PICKER (100% VIEWPORT BOUND, ZERO GAP)
+   ========================================================================== */
+
+.custom-datepicker-native-hidden {
+  position: absolute !important;
+  opacity: 0 !important;
+  pointer-events: none !important;
+  width: 1px !important;
+  height: 1px !important;
+  margin: -1px !important;
+  padding: 0 !important;
+  clip: rect(0, 0, 0, 0) !important;
+  overflow: hidden !important;
+  border: 0 !important;
+}
+
+.custom-datepicker-wrapper {
+  position: relative !important;
+  width: 100% !important;
+  max-width: 100% !important;
+  min-width: 0 !important;
+  box-sizing: border-box !important;
+  display: block;
+}
+
+.custom-datepicker-trigger {
+  width: 100% !important;
+  max-width: 100% !important;
+  min-width: 0 !important;
+  box-sizing: border-box !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: space-between !important;
+  gap: 10px;
+  cursor: pointer;
+  text-align: left;
+  user-select: none;
+  min-height: 46px;
+}
+
+[dir="rtl"] .custom-datepicker-trigger {
+  text-align: right !important;
+}
+
+.custom-datepicker-label {
+  flex: 1 1 auto;
+  min-width: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.custom-datepicker-trigger.placeholder-active .custom-datepicker-label {
+  color: var(--text-muted, #6B8294);
+  font-weight: 400;
+}
+
+.custom-datepicker-icon {
+  flex-shrink: 0;
+  color: var(--warm-orange, #E47B32);
+  transition: transform 0.2s ease;
+}
+
+[data-theme="dark"] .custom-datepicker-icon {
+  color: #FFA35C;
+}
+
+/* Calendar Popover Dialog */
+.custom-datepicker-popover {
+  position: absolute;
+  top: calc(100% + 6px);
+  left: 0;
+  width: 100%;
+  min-width: 280px;
+  max-width: 320px;
+  box-sizing: border-box !important;
+  background-color: var(--bg-surface-elevated, var(--card-bg, #FFFFFF));
+  border: 1px solid var(--border-color, #D9E1E6);
+  border-radius: var(--radius-md, 14px);
+  box-shadow: 0 12px 36px rgba(16, 38, 58, 0.16), 0 4px 12px rgba(0, 0, 0, 0.06);
+  padding: 14px 12px 12px;
+  margin: 0;
+  z-index: 10000;
+  display: none;
+  height: auto !important; /* CRITICAL: Wraps strictly around calendar content with NO extra empty area */
+  max-height: fit-content !important;
+}
+
+.custom-datepicker-wrapper.open .custom-datepicker-popover {
+  display: block;
+  animation: customSelectFadeIn 0.18s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.custom-datepicker-wrapper.dropup .custom-datepicker-popover {
+  top: auto;
+  bottom: calc(100% + 6px);
+}
+
+/* Header (Month Year & Prev/Next Nav) */
+.cdp-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 12px;
+  padding: 0 4px;
+}
+
+.cdp-title {
+  font-family: var(--font-heading, inherit);
+  font-size: 0.95rem;
+  font-weight: 800;
+  color: var(--text-primary);
+}
+
+.cdp-nav-btn {
+  background: var(--bg-subtle, #E8F0F5);
+  border: 1px solid var(--border-color, #D9E1E6);
+  border-radius: var(--radius-sm, 8px);
+  width: 30px;
+  height: 30px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--text-primary);
+  cursor: pointer;
+  transition: all 0.15s ease;
+}
+
+.cdp-nav-btn:hover {
+  background: var(--warm-orange, #E47B32);
+  border-color: var(--warm-orange, #E47B32);
+  color: #FFFFFF;
+}
+
+/* Weekday header row */
+.cdp-weekdays {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  gap: 2px;
+  text-align: center;
+  margin-bottom: 6px;
+}
+
+.cdp-weekdays span {
+  font-size: 0.72rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  color: var(--text-muted, #6B8294);
+  padding: 4px 0;
+}
+
+/* Days Grid */
+.cdp-days-grid {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  gap: 4px;
+}
+
+.cdp-day {
+  background: transparent;
+  border: 1px solid transparent;
+  border-radius: var(--radius-sm, 8px);
+  height: 34px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.86rem;
+  font-weight: 600;
+  color: var(--text-primary);
+  cursor: pointer;
+  transition: all 0.15s ease;
+  padding: 0;
+  user-select: none;
+}
+
+.cdp-day.other-month {
+  color: var(--text-muted);
+  opacity: 0.45;
+}
+
+.cdp-day.current-month:hover,
+.cdp-day.other-month:hover {
+  background-color: var(--bg-subtle, #E8F0F5);
+  color: var(--warm-orange, #E47B32);
+  border-color: var(--border-color);
+}
+
+.cdp-day.today {
+  border-color: var(--warm-orange, #E47B32);
+  font-weight: 800;
+  color: var(--warm-orange, #E47B32);
+}
+
+.cdp-day.selected {
+  background-color: var(--warm-orange, #E47B32) !important;
+  color: #FFFFFF !important;
+  border-color: var(--warm-orange, #E47B32) !important;
+  font-weight: 800;
+  box-shadow: 0 4px 10px rgba(228, 123, 50, 0.35);
+}
+
+/* Footer (Clear & Today Buttons) */
+.cdp-footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: 10px;
+  padding-top: 10px;
+  border-top: 1px solid var(--border-light, #EBF0F3);
+}
+
+.cdp-action-btn {
+  background: transparent;
+  border: none;
+  font-size: 0.85rem;
+  font-weight: 700;
+  cursor: pointer;
+  padding: 6px 10px;
+  border-radius: var(--radius-sm, 6px);
+  transition: all 0.15s ease;
+}
+
+.cdp-action-btn.cdp-clear {
+  color: var(--text-muted, #6B8294);
+}
+.cdp-action-btn.cdp-clear:hover {
+  color: #E53E3E;
+  background: rgba(229, 62, 62, 0.1);
+}
+
+.cdp-action-btn.cdp-today {
+  color: var(--warm-orange, #E47B32);
+}
+.cdp-action-btn.cdp-today:hover {
+  background: rgba(228, 123, 50, 0.12);
+}
+
+/* Dark Mode Tokens for Custom Datepicker */
+[data-theme="dark"] .custom-datepicker-popover {
+  background-color: #12283D !important;
+  border-color: var(--border-color);
+  box-shadow: 0 16px 40px rgba(0, 0, 0, 0.55);
+}
+
+[data-theme="dark"] .cdp-nav-btn {
+  background: var(--bg-subtle);
+  border-color: var(--border-color);
+  color: var(--text-primary);
+}
+
+[data-theme="dark"] .cdp-footer {
+  border-top-color: rgba(255, 255, 255, 0.08);
+}
+
+[data-theme="dark"] .cdp-day.current-month:hover,
+[data-theme="dark"] .cdp-day.other-month:hover {
+  background-color: rgba(228, 123, 50, 0.18);
+  color: #FFA35C;
+}
+
+[data-theme="dark"] .cdp-action-btn.cdp-today {
+  color: #FFA35C;
+}
+
+/* Small screen adjustments down to 200px */
+@media (max-width: 360px) {
+  .custom-datepicker-popover {
+    min-width: 0 !important;
+    width: 100% !important;
+    padding: 10px 6px 8px !important;
+  }
+
+  .cdp-day {
+    height: 30px !important;
+    font-size: 0.8rem !important;
+  }
+}
+
+
+
 
 
 

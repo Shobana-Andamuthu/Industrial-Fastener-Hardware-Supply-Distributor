@@ -610,8 +610,388 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   }
 
-  // Initialize Custom Selects
+  // 14. High-Performance Responsive Custom Date Picker (100% Viewport Bound, Zero Gap)
+  function initCustomDatePickers() {
+    const dateInputs = document.querySelectorAll('input[type="date"]');
+
+    dateInputs.forEach(dateInput => {
+      if (dateInput.dataset.customDateInit === 'true' || dateInput.getAttribute('data-no-custom') === 'true') return;
+      dateInput.dataset.customDateInit = 'true';
+
+      // Hide native date input visually
+      dateInput.classList.add('custom-datepicker-native-hidden');
+
+      // Create wrapper
+      const wrapper = document.createElement('div');
+      wrapper.className = 'custom-datepicker-wrapper';
+
+      // Trigger button
+      const trigger = document.createElement('button');
+      trigger.type = 'button';
+      trigger.className = 'custom-datepicker-trigger form-input';
+      trigger.setAttribute('aria-haspopup', 'dialog');
+      trigger.setAttribute('aria-expanded', 'false');
+
+      const labelSpan = document.createElement('span');
+      labelSpan.className = 'custom-datepicker-label';
+      labelSpan.textContent = dateInput.value ? formatDateDisplay(dateInput.value) : (dateInput.getAttribute('placeholder') || 'Select required date...');
+      if (!dateInput.value) trigger.classList.add('placeholder-active');
+
+      const calIcon = document.createElementNS('http://www.w3.org/2000/svg', 'svg');
+      calIcon.setAttribute('class', 'custom-datepicker-icon');
+      calIcon.setAttribute('width', '18');
+      calIcon.setAttribute('height', '18');
+      calIcon.setAttribute('viewBox', '0 0 24 24');
+      calIcon.setAttribute('fill', 'none');
+      calIcon.setAttribute('stroke', 'currentColor');
+      calIcon.setAttribute('stroke-width', '2');
+      calIcon.setAttribute('stroke-linecap', 'round');
+      calIcon.setAttribute('stroke-linejoin', 'round');
+      calIcon.innerHTML = '<rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect><line x1="16" y1="2" x2="16" y2="6"></line><line x1="8" y1="2" x2="8" y2="6"></line><line x1="3" y1="10" x2="21" y2="10"></line>';
+
+      trigger.appendChild(labelSpan);
+      trigger.appendChild(calIcon);
+
+      // Popover Calendar Dialog
+      const popover = document.createElement('div');
+      popover.className = 'custom-datepicker-popover';
+      popover.setAttribute('role', 'dialog');
+      popover.setAttribute('aria-label', 'Calendar Date Picker');
+
+      let viewDate = dateInput.value ? new Date(dateInput.value + 'T00:00:00') : new Date();
+      if (isNaN(viewDate.getTime())) viewDate = new Date();
+
+      let currentYear = viewDate.getFullYear();
+      let currentMonth = viewDate.getMonth(); // 0-11
+
+      const monthNames = [
+        'January', 'February', 'March', 'April', 'May', 'June',
+        'July', 'August', 'September', 'October', 'November', 'December'
+      ];
+
+      function formatDateDisplay(isoString) {
+        if (!isoString) return '';
+        const parts = isoString.split('-');
+        if (parts.length !== 3) return isoString;
+        const d = new Date(parseInt(parts[0]), parseInt(parts[1]) - 1, parseInt(parts[2]));
+        if (isNaN(d.getTime())) return isoString;
+        return monthNames[d.getMonth()] + ' ' + d.getDate() + ', ' + d.getFullYear();
+      }
+
+      function renderCalendar() {
+        popover.innerHTML = '';
+
+        // Header
+        const header = document.createElement('div');
+        header.className = 'cdp-header';
+
+        const prevBtn = document.createElement('button');
+        prevBtn.type = 'button';
+        prevBtn.className = 'cdp-nav-btn cdp-prev';
+        prevBtn.setAttribute('aria-label', 'Previous Month');
+        prevBtn.innerHTML = '<svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="15 18 9 12 15 6"></polyline></svg>';
+        prevBtn.addEventListener('click', (e) => {
+          e.preventDefault();
+          e.stopPropagation();
+          currentMonth--;
+          if (currentMonth < 0) {
+            currentMonth = 11;
+            currentYear--;
+          }
+          renderCalendar();
+        });
+
+        const titleWrap = document.createElement('div');
+        titleWrap.className = 'cdp-title';
+        titleWrap.textContent = `${monthNames[currentMonth]} ${currentYear}`;
+
+        const nextBtn = document.createElement('button');
+        nextBtn.type = 'button';
+        nextBtn.className = 'cdp-nav-btn cdp-next';
+        nextBtn.setAttribute('aria-label', 'Next Month');
+        nextBtn.innerHTML = '<svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="9 18 15 12 9 6"></polyline></svg>';
+        nextBtn.addEventListener('click', (e) => {
+          e.preventDefault();
+          e.stopPropagation();
+          currentMonth++;
+          if (currentMonth > 11) {
+            currentMonth = 0;
+            currentYear++;
+          }
+          renderCalendar();
+        });
+
+        header.appendChild(prevBtn);
+        header.appendChild(titleWrap);
+        header.appendChild(nextBtn);
+        popover.appendChild(header);
+
+        // Weekday row
+        const weekdays = document.createElement('div');
+        weekdays.className = 'cdp-weekdays';
+        ['Su', 'Mo', 'Tu', 'We', 'Th', 'Fr', 'Sa'].forEach(day => {
+          const span = document.createElement('span');
+          span.textContent = day;
+          weekdays.appendChild(span);
+        });
+        popover.appendChild(weekdays);
+
+        // Days Grid
+        const daysGrid = document.createElement('div');
+        daysGrid.className = 'cdp-days-grid';
+
+        const firstDayIndex = new Date(currentYear, currentMonth, 1).getDay();
+        const daysInMonth = new Date(currentYear, currentMonth + 1, 0).getDate();
+        const daysInPrevMonth = new Date(currentYear, currentMonth, 0).getDate();
+
+        const today = new Date();
+        const isCurrentMonthThisMonth = today.getFullYear() === currentYear && today.getMonth() === currentMonth;
+
+        let selectedYear = null, selectedMonth = null, selectedDay = null;
+        if (dateInput.value) {
+          const sParts = dateInput.value.split('-');
+          if (sParts.length === 3) {
+            selectedYear = parseInt(sParts[0]);
+            selectedMonth = parseInt(sParts[1]) - 1;
+            selectedDay = parseInt(sParts[2]);
+          }
+        }
+
+        // Previous month padding days
+        for (let i = firstDayIndex - 1; i >= 0; i--) {
+          const pDay = daysInPrevMonth - i;
+          const dayCell = document.createElement('button');
+          dayCell.type = 'button';
+          dayCell.className = 'cdp-day other-month';
+          dayCell.textContent = pDay;
+          dayCell.addEventListener('click', (e) => {
+            e.preventDefault();
+            e.stopPropagation();
+            currentMonth--;
+            if (currentMonth < 0) {
+              currentMonth = 11;
+              currentYear--;
+            }
+            selectDay(pDay);
+          });
+          daysGrid.appendChild(dayCell);
+        }
+
+        // Current month days
+        for (let day = 1; day <= daysInMonth; day++) {
+          const dayCell = document.createElement('button');
+          dayCell.type = 'button';
+          dayCell.className = 'cdp-day current-month';
+          dayCell.textContent = day;
+
+          if (isCurrentMonthThisMonth && today.getDate() === day) {
+            dayCell.classList.add('today');
+          }
+
+          if (selectedYear === currentYear && selectedMonth === currentMonth && selectedDay === day) {
+            dayCell.classList.add('selected');
+          }
+
+          dayCell.addEventListener('click', (e) => {
+            e.preventDefault();
+            e.stopPropagation();
+            selectDay(day);
+          });
+
+          daysGrid.appendChild(dayCell);
+        }
+
+        // Next month padding days
+        const totalRendered = firstDayIndex + daysInMonth;
+        const nextDaysCount = (totalRendered <= 35 ? 35 : 42) - totalRendered;
+        for (let n = 1; n <= nextDaysCount; n++) {
+          const dayCell = document.createElement('button');
+          dayCell.type = 'button';
+          dayCell.className = 'cdp-day other-month';
+          dayCell.textContent = n;
+          dayCell.addEventListener('click', (e) => {
+            e.preventDefault();
+            e.stopPropagation();
+            currentMonth++;
+            if (currentMonth > 11) {
+              currentMonth = 0;
+              currentYear++;
+            }
+            selectDay(n);
+          });
+          daysGrid.appendChild(dayCell);
+        }
+
+        popover.appendChild(daysGrid);
+
+        // Footer Actions (Clear & Today)
+        const footer = document.createElement('div');
+        footer.className = 'cdp-footer';
+
+        const clearBtn = document.createElement('button');
+        clearBtn.type = 'button';
+        clearBtn.className = 'cdp-action-btn cdp-clear';
+        clearBtn.textContent = 'Clear';
+        clearBtn.addEventListener('click', (e) => {
+          e.preventDefault();
+          e.stopPropagation();
+          dateInput.value = '';
+          dateInput.dispatchEvent(new Event('input', { bubbles: true }));
+          dateInput.dispatchEvent(new Event('change', { bubbles: true }));
+          labelSpan.textContent = dateInput.getAttribute('placeholder') || 'Select required date...';
+          trigger.classList.add('placeholder-active');
+          closePopover();
+        });
+
+        const todayBtn = document.createElement('button');
+        todayBtn.type = 'button';
+        todayBtn.className = 'cdp-action-btn cdp-today';
+        todayBtn.textContent = 'Today';
+        todayBtn.addEventListener('click', (e) => {
+          e.preventDefault();
+          e.stopPropagation();
+          const now = new Date();
+          currentYear = now.getFullYear();
+          currentMonth = now.getMonth();
+          selectDay(now.getDate());
+        });
+
+        footer.appendChild(clearBtn);
+        footer.appendChild(todayBtn);
+        popover.appendChild(footer);
+      }
+
+      function selectDay(day) {
+        const mm = String(currentMonth + 1).padStart(2, '0');
+        const dd = String(day).padStart(2, '0');
+        const isoValue = `${currentYear}-${mm}-${dd}`;
+        dateInput.value = isoValue;
+
+        dateInput.dispatchEvent(new Event('input', { bubbles: true }));
+        dateInput.dispatchEvent(new Event('change', { bubbles: true }));
+
+        labelSpan.textContent = formatDateDisplay(isoValue);
+        trigger.classList.remove('placeholder-active');
+        closePopover();
+      }
+
+      function checkPosition() {
+        const rect = trigger.getBoundingClientRect();
+        const spaceBelow = window.innerHeight - rect.bottom;
+        const spaceAbove = rect.top;
+
+        if (spaceBelow < 310 && spaceAbove > spaceBelow) {
+          wrapper.classList.add('dropup');
+        } else {
+          wrapper.classList.remove('dropup');
+        }
+
+        // Keep inside horizontal viewport
+        if (rect.left + 300 > window.innerWidth) {
+          popover.style.right = '0px';
+          popover.style.left = 'auto';
+        } else {
+          popover.style.left = '0px';
+          popover.style.right = 'auto';
+        }
+      }
+
+      function openPopover() {
+        document.querySelectorAll('.custom-datepicker-wrapper.open').forEach(w => {
+          if (w !== wrapper) {
+            w.classList.remove('open');
+            const tr = w.querySelector('.custom-datepicker-trigger');
+            if (tr) tr.setAttribute('aria-expanded', 'false');
+          }
+        });
+        document.querySelectorAll('.custom-select-wrapper.open').forEach(w => {
+          w.classList.remove('open');
+        });
+
+        if (dateInput.value) {
+          const parts = dateInput.value.split('-');
+          if (parts.length === 3) {
+            currentYear = parseInt(parts[0]);
+            currentMonth = parseInt(parts[1]) - 1;
+          }
+        }
+
+        renderCalendar();
+        checkPosition();
+        wrapper.classList.add('open');
+        trigger.setAttribute('aria-expanded', 'true');
+      }
+
+      function closePopover() {
+        wrapper.classList.remove('open');
+        trigger.setAttribute('aria-expanded', 'false');
+      }
+
+      function togglePopover() {
+        if (wrapper.classList.contains('open')) {
+          closePopover();
+        } else {
+          openPopover();
+        }
+      }
+
+      trigger.addEventListener('click', (e) => {
+        e.preventDefault();
+        e.stopPropagation();
+        togglePopover();
+      });
+
+      trigger.addEventListener('keydown', (e) => {
+        if (e.key === 'Enter' || e.key === ' ') {
+          e.preventDefault();
+          togglePopover();
+        } else if (e.key === 'Escape' || e.key === 'Tab') {
+          closePopover();
+        }
+      });
+
+      // Synchronize with external changes
+      dateInput.addEventListener('change', () => {
+        if (dateInput.value) {
+          labelSpan.textContent = formatDateDisplay(dateInput.value);
+          trigger.classList.remove('placeholder-active');
+        } else {
+          labelSpan.textContent = dateInput.getAttribute('placeholder') || 'Select required date...';
+          trigger.classList.add('placeholder-active');
+        }
+      });
+
+      // Insert wrapper into DOM
+      dateInput.parentNode.insertBefore(wrapper, dateInput);
+      wrapper.appendChild(trigger);
+      wrapper.appendChild(popover);
+      wrapper.appendChild(dateInput);
+    });
+
+    // Close on click outside
+    document.addEventListener('click', (e) => {
+      if (!e.target.closest('.custom-datepicker-wrapper')) {
+        document.querySelectorAll('.custom-datepicker-wrapper.open').forEach(w => {
+          w.classList.remove('open');
+          const tr = w.querySelector('.custom-datepicker-trigger');
+          if (tr) tr.setAttribute('aria-expanded', 'false');
+        });
+      }
+    });
+
+    // Close on resize/scroll
+    window.addEventListener('resize', () => {
+      document.querySelectorAll('.custom-datepicker-wrapper.open').forEach(w => {
+        w.classList.remove('open');
+        const tr = w.querySelector('.custom-datepicker-trigger');
+        if (tr) tr.setAttribute('aria-expanded', 'false');
+      });
+    }, { passive: true });
+  }
+
+  // Initialize Custom Selects & Date Pickers
   initCustomSelects();
+  initCustomDatePickers();
 });
 
 
