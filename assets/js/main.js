@@ -3,55 +3,60 @@
  * Main JavaScript Controller
  */
 
-document.addEventListener('DOMContentLoaded', () => {
-  // 1. Theme Management (Light / Dark)
-  const themeToggleBtns = document.querySelectorAll('.theme-toggle-btn');
-  const storedTheme = localStorage.getItem('apex_theme') || 'light';
-  
-  function applyTheme(theme) {
-    document.documentElement.setAttribute('data-theme', theme);
-    localStorage.setItem('apex_theme', theme);
-    themeToggleBtns.forEach(btn => {
-      btn.innerHTML = theme === 'dark' 
-        ? `<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"></circle><line x1="12" y1="1" x2="12" y2="3"></line><line x1="12" y1="21" x2="12" y2="23"></line><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line><line x1="1" y1="12" x2="3" y2="12"></line><line x1="21" y1="12" x2="23" y2="12"></line><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line></svg>`
-        : `<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path></svg>`;
-      btn.setAttribute('aria-label', `Switch to ${theme === 'dark' ? 'light' : 'dark'} mode`);
-    });
-  }
-  
-  applyTheme(storedTheme);
-  
-  themeToggleBtns.forEach(btn => {
-    btn.addEventListener('click', () => {
-      const currentTheme = document.documentElement.getAttribute('data-theme') || 'light';
-      const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
-      applyTheme(newTheme);
-    });
+// Global Theme Management (Light / Dark)
+function applyTheme(theme) {
+  document.documentElement.setAttribute('data-theme', theme);
+  localStorage.setItem('apex_theme', theme);
+  document.querySelectorAll('.theme-toggle-btn').forEach(btn => {
+    btn.innerHTML = theme === 'dark' 
+      ? `<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"></circle><line x1="12" y1="1" x2="12" y2="3"></line><line x1="12" y1="21" x2="12" y2="23"></line><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line><line x1="1" y1="12" x2="3" y2="12"></line><line x1="21" y1="12" x2="23" y2="12"></line><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line></svg>`
+      : `<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path></svg>`;
+    btn.setAttribute('aria-label', `Switch to ${theme === 'dark' ? 'light' : 'dark'} mode`);
   });
+}
 
-  // 2. RTL Management (LTR / RTL)
-  const rtlToggleBtns = document.querySelectorAll('.rtl-toggle-btn');
-  const storedDir = localStorage.getItem('apex_dir') || 'ltr';
-  
-  function applyDirection(dir) {
-    document.documentElement.setAttribute('dir', dir);
-    document.documentElement.setAttribute('lang', dir === 'rtl' ? 'ar' : 'en');
-    localStorage.setItem('apex_dir', dir);
-    rtlToggleBtns.forEach(btn => {
-      btn.textContent = dir === 'rtl' ? 'LTR' : 'RTL';
-      btn.setAttribute('aria-label', `Switch to ${dir === 'rtl' ? 'LTR' : 'RTL'}`);
-    });
-  }
-  
-  applyDirection(storedDir);
-  
-  rtlToggleBtns.forEach(btn => {
-    btn.addEventListener('click', () => {
-      const currentDir = document.documentElement.getAttribute('dir') || 'ltr';
-      const newDir = currentDir === 'rtl' ? 'ltr' : 'rtl';
-      applyDirection(newDir);
-    });
+// Global RTL Management (LTR / RTL)
+function applyDirection(dir) {
+  document.documentElement.setAttribute('dir', dir);
+  document.documentElement.setAttribute('lang', dir === 'rtl' ? 'ar' : 'en');
+  localStorage.setItem('apex_dir', dir);
+  document.querySelectorAll('.rtl-toggle-btn').forEach(btn => {
+    btn.textContent = dir === 'rtl' ? 'LTR' : 'RTL';
+    btn.setAttribute('aria-label', `Switch to ${dir === 'rtl' ? 'LTR' : 'RTL'}`);
   });
+}
+
+// Immediate Theme & RTL Restoration
+const currentStoredTheme = localStorage.getItem('apex_theme') || 'light';
+const currentStoredDir = localStorage.getItem('apex_dir') || 'ltr';
+applyTheme(currentStoredTheme);
+applyDirection(currentStoredDir);
+
+// Delegated Global Event Handler for Theme & RTL (Always Active on All Pages)
+document.addEventListener('click', (e) => {
+  const themeBtn = e.target.closest('.theme-toggle-btn');
+  if (themeBtn) {
+    e.preventDefault();
+    const currentTheme = document.documentElement.getAttribute('data-theme') || 'light';
+    const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
+    applyTheme(newTheme);
+    return;
+  }
+
+  const rtlBtn = e.target.closest('.rtl-toggle-btn');
+  if (rtlBtn) {
+    e.preventDefault();
+    const currentDir = document.documentElement.getAttribute('dir') || 'ltr';
+    const newDir = currentDir === 'rtl' ? 'ltr' : 'rtl';
+    applyDirection(newDir);
+    return;
+  }
+});
+
+function initTitanApp() {
+  // Sync UI state for theme & RTL buttons
+  applyTheme(localStorage.getItem('apex_theme') || 'light');
+  applyDirection(localStorage.getItem('apex_dir') || 'ltr');
 
   // 3. Mobile Navigation Drawer & Active State
   const hamburgerBtn = document.querySelector('.hamburger-btn');
@@ -992,7 +997,15 @@ document.addEventListener('DOMContentLoaded', () => {
   // Initialize Custom Selects & Date Pickers
   initCustomSelects();
   initCustomDatePickers();
-});
+}
+
+// Bootstrap application immediately or on DOM ready
+if (document.readyState === 'loading') {
+  document.addEventListener('DOMContentLoaded', initTitanApp);
+} else {
+  initTitanApp();
+}
+
 
 
 
