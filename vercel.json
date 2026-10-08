@@ -1,0 +1,16 @@
+{
+  "rewrites": [
+    {
+      "source": "/",
+      "destination": "/template-13-industrial-fastener-hardware/index.html"
+    },
+    {
+      "source": "/assets/:match*",
+      "destination": "/template-13-industrial-fastener-hardware/assets/:match*"
+    },
+    {
+      "source": "/:path*",
+      "destination": "/template-13-industrial-fastener-hardware/:path*"
+    }
+  ]
+}
