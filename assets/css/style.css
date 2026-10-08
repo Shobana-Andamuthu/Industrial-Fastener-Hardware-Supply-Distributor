@@ -6142,9 +6142,37 @@ input[type="date"] {
 }
 
 .dash-topbar .theme-toggle-btn:hover,
-.dash-topbar .rtl-toggle-btn:hover {
-  background-color: var(--light-blue);
-  border-color: var(--steel-blue);
+.dash-topbar .rtl-toggle-btn:hover,
+.icon-btn:hover,
+.theme-toggle-btn:hover,
+.rtl-toggle-btn:hover {
+  background-color: rgba(228, 123, 50, 0.12) !important;
+  border-color: var(--warm-orange) !important;
+  color: var(--warm-orange) !important;
+}
+
+.dash-topbar .theme-toggle-btn:hover svg,
+.icon-btn:hover svg,
+.theme-toggle-btn:hover svg {
+  stroke: var(--warm-orange) !important;
+  color: var(--warm-orange) !important;
+}
+
+[data-theme="dark"] .dash-topbar .theme-toggle-btn:hover,
+[data-theme="dark"] .dash-topbar .rtl-toggle-btn:hover,
+[data-theme="dark"] .icon-btn:hover,
+[data-theme="dark"] .theme-toggle-btn:hover,
+[data-theme="dark"] .rtl-toggle-btn:hover {
+  background-color: rgba(228, 123, 50, 0.22) !important;
+  border-color: #FFA35C !important;
+  color: #FFA35C !important;
+}
+
+[data-theme="dark"] .dash-topbar .theme-toggle-btn:hover svg,
+[data-theme="dark"] .icon-btn:hover svg,
+[data-theme="dark"] .theme-toggle-btn:hover svg {
+  stroke: #FFA35C !important;
+  color: #FFA35C !important;
 }
 
 .dash-user-menu {
