@@ -156,35 +156,230 @@ function initTitanApp() {
     });
   });
 
+  // 6. Home 2 Interactive SKU Technical Matrix with Full Responsive Pagination & Filtering
   const filterBtns = document.querySelectorAll('.h2-filter-btn');
+  const matrixGrid = document.getElementById('h2MatrixGrid');
   const matrixCards = document.querySelectorAll('.h2-matrix-card');
-  if (filterBtns.length && matrixCards.length) {
+  const paginationWrapper = document.getElementById('h2MatrixPaginationWrapper');
+  const pageNumbersEl = document.getElementById('h2PageNumbers');
+  const prevBtn = document.getElementById('h2PrevBtn');
+  const nextBtn = document.getElementById('h2NextBtn');
+  const pageRangeEl = document.getElementById('h2PageRange');
+  const totalCountEl = document.getElementById('h2TotalCount');
+  const pageSizeSelect = document.getElementById('h2PageSizeSelect');
+
+  if (matrixCards.length && matrixGrid) {
+    let currentCategory = 'all';
+    let currentPage = 1;
+    let pageSize = 8; // Default 8 items per page (2 rows of 4 cards on desktop)
+
+    function getFilteredCards() {
+      const cardsArr = Array.from(matrixCards);
+      if (currentCategory === 'all') {
+        return cardsArr;
+      }
+      return cardsArr.filter(card => {
+        const cardCat = (card.getAttribute('data-category') || '').toLowerCase();
+        return cardCat.includes(currentCategory);
+      });
+    }
+
+    function renderMatrixPagination() {
+      const filtered = getFilteredCards();
+      const totalItems = filtered.length;
+      
+      const effectivePageSize = pageSize === 'all' ? (totalItems || 1) : parseInt(pageSize, 10);
+      const totalPages = Math.max(1, Math.ceil(totalItems / effectivePageSize));
+
+      if (currentPage > totalPages) {
+        currentPage = totalPages;
+      }
+      if (currentPage < 1) {
+        currentPage = 1;
+      }
+
+      const startIndex = (currentPage - 1) * effectivePageSize;
+      const endIndex = Math.min(startIndex + effectivePageSize, totalItems);
+
+      // Hide all cards first
+      matrixCards.forEach(card => {
+        card.style.display = 'none';
+        card.style.opacity = '0';
+        card.style.transform = 'translateY(8px)';
+      });
+
+      // Show cards belonging to current page
+      filtered.forEach((card, idx) => {
+        if (idx >= startIndex && idx < endIndex) {
+          card.style.display = 'flex';
+          const delay = (idx - startIndex) * 20;
+          setTimeout(() => {
+            card.style.transition = 'opacity 0.25s ease, transform 0.25s ease';
+            card.style.opacity = '1';
+            card.style.transform = 'translateY(0)';
+          }, delay);
+        }
+      });
+
+      // Update Range / Counter Text
+      if (pageRangeEl && totalCountEl) {
+        if (totalItems === 0) {
+          pageRangeEl.textContent = '0';
+          totalCountEl.textContent = '0';
+        } else {
+          pageRangeEl.textContent = `${startIndex + 1}–${endIndex}`;
+          totalCountEl.textContent = totalItems.toString();
+        }
+      }
+
+      // Update Prev / Next Buttons State
+      if (prevBtn) {
+        prevBtn.disabled = currentPage <= 1;
+      }
+      if (nextBtn) {
+        nextBtn.disabled = currentPage >= totalPages;
+      }
+
+      // Render Page Buttons
+      if (pageNumbersEl) {
+        pageNumbersEl.innerHTML = '';
+
+        if (totalPages <= 1) {
+          const btn = document.createElement('button');
+          btn.type = 'button';
+          btn.className = 'h2-page-btn active';
+          btn.textContent = '1';
+          btn.setAttribute('aria-label', 'Page 1');
+          btn.setAttribute('aria-current', 'page');
+          pageNumbersEl.appendChild(btn);
+        } else {
+          // Generate smart numbered buttons (with ellipsis if large number of pages)
+          const maxVisibleButtons = 5;
+          let startPage = 1;
+          let endPage = totalPages;
+
+          if (totalPages > maxVisibleButtons) {
+            if (currentPage <= 3) {
+              startPage = 1;
+              endPage = maxVisibleButtons;
+            } else if (currentPage + 2 >= totalPages) {
+              startPage = totalPages - maxVisibleButtons + 1;
+              endPage = totalPages;
+            } else {
+              startPage = currentPage - 2;
+              endPage = currentPage + 2;
+            }
+          }
+
+          if (startPage > 1) {
+            const firstBtn = createPageBtn(1);
+            pageNumbersEl.appendChild(firstBtn);
+            if (startPage > 2) {
+              const dots = document.createElement('span');
+              dots.className = 'h2-page-ellipsis';
+              dots.textContent = '…';
+              pageNumbersEl.appendChild(dots);
+            }
+          }
+
+          for (let p = startPage; p <= endPage; p++) {
+            const btn = createPageBtn(p);
+            pageNumbersEl.appendChild(btn);
+          }
+
+          if (endPage < totalPages) {
+            if (endPage < totalPages - 1) {
+              const dots = document.createElement('span');
+              dots.className = 'h2-page-ellipsis';
+              dots.textContent = '…';
+              pageNumbersEl.appendChild(dots);
+            }
+            const lastBtn = createPageBtn(totalPages);
+            pageNumbersEl.appendChild(lastBtn);
+          }
+        }
+      }
+    }
+
+    function createPageBtn(pageNum) {
+      const btn = document.createElement('button');
+      btn.type = 'button';
+      btn.className = `h2-page-btn ${pageNum === currentPage ? 'active' : ''}`;
+      btn.textContent = pageNum.toString();
+      btn.setAttribute('aria-label', `Page ${pageNum}`);
+      if (pageNum === currentPage) {
+        btn.setAttribute('aria-current', 'page');
+      }
+      btn.addEventListener('click', () => {
+        if (currentPage !== pageNum) {
+          currentPage = pageNum;
+          renderMatrixPagination();
+          scrollToMatrix();
+        }
+      });
+      return btn;
+    }
+
+    function scrollToMatrix() {
+      const section = document.getElementById('product-matrix');
+      if (section) {
+        const rect = section.getBoundingClientRect();
+        if (rect.top < -30) {
+          section.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }
+      }
+    }
+
+    // Category Filter Buttons
     filterBtns.forEach(btn => {
       btn.addEventListener('click', () => {
         filterBtns.forEach(b => b.classList.remove('active'));
         btn.classList.add('active');
-        const filterVal = (btn.getAttribute('data-filter') || 'all').toLowerCase();
-
-        matrixCards.forEach(card => {
-          const cardCat = (card.getAttribute('data-category') || '').toLowerCase();
-          if (filterVal === 'all' || cardCat.includes(filterVal)) {
-            card.style.display = 'flex';
-            card.style.opacity = '0';
-            card.style.transform = 'translateY(6px)';
-            setTimeout(() => {
-              card.style.transition = 'opacity 0.2s ease, transform 0.2s ease';
-              card.style.opacity = '1';
-              card.style.transform = 'translateY(0)';
-            }, 10);
-          } else {
-            card.style.display = 'none';
-          }
-        });
+        currentCategory = (btn.getAttribute('data-filter') || 'all').toLowerCase();
+        currentPage = 1;
+        renderMatrixPagination();
       });
     });
+
+    // Previous Page Button
+    if (prevBtn) {
+      prevBtn.addEventListener('click', () => {
+        if (currentPage > 1) {
+          currentPage--;
+          renderMatrixPagination();
+          scrollToMatrix();
+        }
+      });
+    }
+
+    // Next Page Button
+    if (nextBtn) {
+      nextBtn.addEventListener('click', () => {
+        const filtered = getFilteredCards();
+        const effectivePageSize = pageSize === 'all' ? filtered.length : parseInt(pageSize, 10);
+        const totalPages = Math.max(1, Math.ceil(filtered.length / effectivePageSize));
+        if (currentPage < totalPages) {
+          currentPage++;
+          renderMatrixPagination();
+          scrollToMatrix();
+        }
+      });
+    }
+
+    // Per Page Select Dropdown
+    if (pageSizeSelect) {
+      pageSizeSelect.addEventListener('change', (e) => {
+        pageSize = e.target.value;
+        currentPage = 1;
+        renderMatrixPagination();
+      });
+    }
+
+    // Initial render on page load
+    renderMatrixPagination();
   }
 
-  // 7. Catalog Interactive Live Filtration Engine (Top Category Ribbon + Search + Sort)
+  // 7. Catalog Interactive Live Filtration & Pagination Engine (Top Category Ribbon + Search + Sort + Pagination)
   const catalogGrid = document.getElementById('catalogGrid');
   if (catalogGrid) {
     const catalogCards = Array.from(catalogGrid.querySelectorAll('.catalog-card'));
@@ -195,34 +390,109 @@ function initTitanApp() {
     const resetNoResultsBtn = document.getElementById('catalogNoResultsReset');
     const ribbonPills = document.querySelectorAll('.cat-ribbon-pill');
 
+    const catPaginationWrapper = document.getElementById('catalogPaginationWrapper');
+    const catPageNumbersEl = document.getElementById('catalogPageNumbers');
+    const catPrevBtn = document.getElementById('catalogPrevBtn');
+    const catNextBtn = document.getElementById('catalogNextBtn');
+    const catPageRangeEl = document.getElementById('catalogPageRange');
+    const catTotalCountEl = document.getElementById('catalogTotalCount');
+    const catPageSizeSelect = document.getElementById('catalogPageSizeSelect');
+
     let currentCategory = 'all';
+    let currentPage = 1;
+    let pageSize = 12; // default 12 items per page
 
-    function runCatalogFilter() {
+    function getFilteredCatalogCards() {
       const query = (searchInput ? searchInput.value : '').trim().toLowerCase();
-      let visibleCount = 0;
-
-      catalogCards.forEach(card => {
+      return catalogCards.filter(card => {
         const cardCategory = (card.dataset.category || '').toLowerCase();
         const cardText = card.textContent.toLowerCase();
-
         const cardCategories = cardCategory.split(/\s+/);
         const matchCat = (currentCategory === 'all' || cardCategories.includes(currentCategory));
         const matchSearch = (!query || cardText.includes(query));
+        return matchCat && matchSearch;
+      });
+    }
 
-        if (matchCat && matchSearch) {
+    function renderCatalogPagination() {
+      const filtered = getFilteredCatalogCards();
+      const totalItems = filtered.length;
+      const effectivePageSize = pageSize === 'all' ? (totalItems || 1) : parseInt(pageSize, 10);
+      const totalPages = Math.max(1, Math.ceil(totalItems / effectivePageSize));
+
+      if (currentPage > totalPages) currentPage = totalPages;
+      if (currentPage < 1) currentPage = 1;
+
+      const startIndex = (currentPage - 1) * effectivePageSize;
+      const endIndex = Math.min(startIndex + effectivePageSize, totalItems);
+
+      // Hide all cards first
+      catalogCards.forEach(card => {
+        card.style.display = 'none';
+      });
+
+      // Show matching cards for current page
+      filtered.forEach((card, idx) => {
+        if (idx >= startIndex && idx < endIndex) {
           card.style.display = '';
-          visibleCount++;
-        } else {
-          card.style.display = 'none';
         }
       });
 
       if (noResultsEl) {
-        noResultsEl.style.display = (visibleCount === 0) ? 'block' : 'none';
+        noResultsEl.style.display = (totalItems === 0) ? 'block' : 'none';
       }
 
       if (resultsCountEl) {
-        resultsCountEl.textContent = `Showing ${visibleCount} of ${catalogCards.length} SKUs`;
+        resultsCountEl.textContent = `Showing ${totalItems} of ${catalogCards.length} SKUs`;
+      }
+
+      if (catPageRangeEl && catTotalCountEl) {
+        if (totalItems === 0) {
+          catPageRangeEl.textContent = '0';
+          catTotalCountEl.textContent = '0';
+        } else {
+          catPageRangeEl.textContent = `${startIndex + 1}–${endIndex}`;
+          catTotalCountEl.textContent = totalItems.toString();
+        }
+      }
+
+      if (catPrevBtn) {
+        catPrevBtn.disabled = currentPage <= 1;
+      }
+      if (catNextBtn) {
+        catNextBtn.disabled = currentPage >= totalPages;
+      }
+
+      if (catPageNumbersEl) {
+        catPageNumbersEl.innerHTML = '';
+        if (totalPages <= 1) {
+          const btn = document.createElement('button');
+          btn.type = 'button';
+          btn.className = 'h2-page-btn active';
+          btn.textContent = '1';
+          btn.setAttribute('aria-label', 'Page 1');
+          btn.setAttribute('aria-current', 'page');
+          catPageNumbersEl.appendChild(btn);
+        } else {
+          for (let p = 1; p <= totalPages; p++) {
+            const btn = document.createElement('button');
+            btn.type = 'button';
+            btn.className = `h2-page-btn ${p === currentPage ? 'active' : ''}`;
+            btn.textContent = p.toString();
+            btn.setAttribute('aria-label', `Page ${p}`);
+            if (p === currentPage) {
+              btn.setAttribute('aria-current', 'page');
+            }
+            btn.addEventListener('click', () => {
+              if (currentPage !== p) {
+                currentPage = p;
+                renderCatalogPagination();
+                scrollToCatalog();
+              }
+            });
+            catPageNumbersEl.appendChild(btn);
+          }
+        }
       }
 
       // Sync Top Ribbon Pills
@@ -231,6 +501,15 @@ function initTitanApp() {
         p.classList.toggle('active', isMatch);
         p.setAttribute('aria-selected', isMatch ? 'true' : 'false');
       });
+    }
+
+    function scrollToCatalog() {
+      if (catalogGrid) {
+        const rect = catalogGrid.getBoundingClientRect();
+        if (rect.top < -30) {
+          catalogGrid.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }
+      }
     }
 
     function runCatalogSort() {
@@ -245,7 +524,7 @@ function initTitanApp() {
         if (val === 'price-asc') return priceA - priceB;
         if (val === 'price-desc') return priceB - priceA;
         if (val === 'name') return nameA.localeCompare(nameB);
-        return 0; // Default/popular keeps initial order
+        return 0;
       });
 
       sorted.forEach(card => catalogGrid.appendChild(card));
@@ -254,18 +533,19 @@ function initTitanApp() {
 
     function selectCategory(cat) {
       currentCategory = cat || 'all';
-      runCatalogFilter();
+      currentPage = 1;
+      renderCatalogPagination();
     }
 
     function resetAllFilters() {
       currentCategory = 'all';
       if (searchInput) searchInput.value = '';
       if (sortSelect) sortSelect.value = 'popular';
+      currentPage = 1;
       runCatalogSort();
-      runCatalogFilter();
+      renderCatalogPagination();
     }
 
-    // Top Category Ribbon Event Listeners
     ribbonPills.forEach(pill => {
       pill.addEventListener('click', () => {
         selectCategory(pill.dataset.cat);
@@ -273,13 +553,16 @@ function initTitanApp() {
     });
 
     if (searchInput) {
-      searchInput.addEventListener('input', runCatalogFilter);
+      searchInput.addEventListener('input', () => {
+        currentPage = 1;
+        renderCatalogPagination();
+      });
     }
 
     if (sortSelect) {
       sortSelect.addEventListener('change', () => {
         runCatalogSort();
-        runCatalogFilter();
+        renderCatalogPagination();
       });
     }
 
@@ -287,7 +570,37 @@ function initTitanApp() {
       resetNoResultsBtn.addEventListener('click', resetAllFilters);
     }
 
-    // Check URL parameters for direct category navigation (e.g. ?cat=bolts or ?cat=hex-bolts)
+    if (catPrevBtn) {
+      catPrevBtn.addEventListener('click', () => {
+        if (currentPage > 1) {
+          currentPage--;
+          renderCatalogPagination();
+          scrollToCatalog();
+        }
+      });
+    }
+
+    if (catNextBtn) {
+      catNextBtn.addEventListener('click', () => {
+        const filtered = getFilteredCatalogCards();
+        const effectivePageSize = pageSize === 'all' ? filtered.length : parseInt(pageSize, 10);
+        const totalPages = Math.max(1, Math.ceil(filtered.length / effectivePageSize));
+        if (currentPage < totalPages) {
+          currentPage++;
+          renderCatalogPagination();
+          scrollToCatalog();
+        }
+      });
+    }
+
+    if (catPageSizeSelect) {
+      catPageSizeSelect.addEventListener('change', (e) => {
+        pageSize = e.target.value;
+        currentPage = 1;
+        renderCatalogPagination();
+      });
+    }
+
     const urlParams = new URLSearchParams(window.location.search);
     const catParam = urlParams.get('cat');
     if (catParam) {
@@ -303,7 +616,7 @@ function initTitanApp() {
 
       selectCategory(targetCat);
     } else {
-      runCatalogFilter();
+      renderCatalogPagination();
     }
   }
 
